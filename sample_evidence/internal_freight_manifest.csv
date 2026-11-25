@@ -1,0 +1,7 @@
+container_id,consignment_ref,commodity_description,hs_code,net_weight_kg,manifest_value_usd,consignee_entity
+CONT-EU-9011,CS-7091,High-Precision Microcontrollers,8542.31,48000,415000,Baltic Tech Components Oü
+CONT-EU-9012,CS-7091,Industrial Sensor Array Modules,8542.31,52000,430000,Baltic Tech Components Oü
+CONT-EU-9013,CS-7091,High-Density Compute Clusters,8471.50,120000,1250000,Baltic Tech Components Oü
+CONT-EU-9014,CS-7091,High-Density Compute Clusters,8471.50,118000,1220000,Baltic Tech Components Oü
+CONT-EU-9015,CS-7091,Optical Fiber Transceivers,8517.62,34000,385000,Baltic Tech Components Oü
+CONT-EU-9016,CS-7091,Power Inverter Heavy Sub-assemblies,8504.40,240000,1280000,Baltic Tech Components Oü

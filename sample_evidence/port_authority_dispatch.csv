@@ -1,0 +1,4 @@
+record_id,vessel_name,imo_number,berth_id,arrival_utc,departure_utc,gross_weight_mt,declared_val_usd,pilot_operator
+LOG-0088,MV Polaris,9128472,Berth 4-A,2026-07-14 03:55:00,2026-07-16 18:20:00,1180,4980000,Capt. H. Lindqvist
+LOG-0089,Nordic Wave,9304123,Berth 2-B,2026-07-15 11:30:00,2026-07-17 08:45:00,820,2400000,Capt. R. Jansen
+LOG-0090,Baltic Carrier,8911204,Berth 5-C,2026-07-15 14:10:00,2026-07-18 02:00:00,640,1850000,Capt. P. Sorensen
