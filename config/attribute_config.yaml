@@ -1,0 +1,23 @@
+# Attribute-specific comparison tolerances and OCR confidence settings
+confidence_threshold: 0.60
+default_numerical_tolerance_pct: 2.0
+
+attribute_tolerances:
+  production: 2.0
+  revenue: 2.0
+  profit: 2.0
+  weight: 2.0
+  employees: 5.0
+  capacity: 5.0
+  growth: 2.0
+  cost: 2.0
+  export: 3.0
+  import: 3.0
+  investment: 2.0
+  price: 2.0
+  share: 1.0
+  market_cap: 3.0
+  debt: 2.0
+  asset: 2.0
+  quantity: 2.0
+  default: 2.0

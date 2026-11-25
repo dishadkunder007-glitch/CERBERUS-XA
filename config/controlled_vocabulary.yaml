@@ -1,0 +1,45 @@
+# Controlled vocabulary for status, compliance, and antonym detection
+
+compliance_ratings:
+  compliant:
+    - compliant
+    - fully compliant
+    - approved
+    - certified
+    - passed
+    - in compliance
+    - satisfactory
+    - licensed
+  non_compliant:
+    - non-compliant
+    - non compliant
+    - failed
+    - revoked
+    - rejected
+    - unsatisfactory
+    - violation
+    - unlicensed
+    - breached
+    - did not comply
+    - failed to comply
+
+operational_statuses:
+  active:
+    - operational
+    - active
+    - running
+    - in operation
+    - open
+    - functional
+    - online
+  inactive:
+    - shutdown
+    - shut down
+    - suspended
+    - bankrupt
+    - under liquidation
+    - in liquidation
+    - dormant
+    - closed
+    - inactive
+    - offline

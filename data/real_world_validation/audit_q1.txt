@@ -1,0 +1,11 @@
+INDEPENDENT AUDIT VERIFICATION REPORT
+Audited Entity: ABC Industries Manufacturing Plant
+Audit Period: Q1 2026
+Auditor: KPMG Verification Services
+
+Audit Findings & Discrepancies:
+- Production output verified at 4,000 units in Q1 2026.
+- Declared revenue confirmed as INR 20,00,000.
+- Executive: Robert Vance
+- Operational Status: shutdown due to maintenance.
+- Compliance Rating: non-compliant.
