@@ -1,0 +1,396 @@
+{
+  "question": "What is the certified payload capacity of the Alpha-7 UAV?",
+  "status": "ANSWERED",
+  "conclusion_type": "supported",
+  "answer": "The payload capacity of Alpha-7 UAV is 15.5 kg.",
+  "summary": "Ollama-synthesized answer (qwen2.5:7b-instruct) with deterministic verification.",
+  "supporting_claims": [
+    {
+      "id": "CLM-A-01",
+      "statement": "Alpha-7 UAV payload capacity certified at 15.5 kg",
+      "entity": "Alpha-7 UAV",
+      "property": "payload_capacity",
+      "value": 15.5,
+      "unit": "kg",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-A-01",
+        "EV-A-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "opposing_claims": [],
+  "unresolved_conflicts": [],
+  "reasoning_steps": [
+    "Stage 1 (Question Understanding): Identified target entity='Alpha-7 UAV', property='payload_capacity', time_constraint='Unbounded', query_type='QUANTITATIVE'.",
+    "Stage 2 (Evidence Grouping): Grouped 2 evidence item(s) across 1 entities, 2 distinct sources, and 0 temporal snapshots.",
+    "Stage 3 (Supporting Evidence): Identified 1 supporting claim(s) backed by 2 evidence item(s) (EV-A-01, EV-A-02).",
+    "Stage 4 (Contradictory Evidence): Identified 0 opposing claim(s) backed by 0 evidence item(s) (None).",
+    "Stage 6 (Evidence Sufficiency): Sufficient relevant evidence identified (2 supporting, 0 opposing).",
+    "Stage 7 (Conclusion): Reached terminal status 'ANSWERED' with calibrated confidence 0.76."
+  ],
+  "assumptions": [],
+  "limitations": [],
+  "confidence": 0.7636,
+  "confidence_score": 0.7636,
+  "confidence_explanation": "Confidence 0.76 computed deterministically: Base reliability (0.80) x 2 independent sources (0.95) x Query relevance (1.00). No active contradictions. Epistemic assessment, not statistical probability.",
+  "is_insufficient_evidence": false,
+  "facts": [
+    "[Verified Fact] Alpha-7 UAV payload capacity certified at 15.5 kg (Verified by reliable records from TEST-REPORT, FAA-TCDS)"
+  ],
+  "inferences": [
+    "Factual convergence: Reliable evidence directly substantiates query proposition regarding 'Alpha-7 UAV'."
+  ],
+  "unknowns": [],
+  "supporting_evidence_ids": [
+    "EV-A-01",
+    "EV-A-02"
+  ],
+  "opposing_evidence_ids": [],
+  "evidence_reliability": {
+    "EV-A-01": {
+      "evidence_id": "EV-A-01",
+      "reliability_score": 78.5,
+      "reliability_label": "High",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 55.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('FAA-TCDS').; Original file/archive reference documented ('alpha7_spec.pdf').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Precise locator (page, section, table, or record) is missing.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 75.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "Corroborated by 1 independent source (test-report).",
+          "missing_information": []
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [55.0]: Identifiable source system/repository ('FAA-TCDS').; Original file/archive reference documented ('alpha7_spec.pdf').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [75.0]: Corroborated by 1 independent source (test-report).",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'structured' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Originating author or organization is unspecified.",
+        "Precise locator (page, section, table, or record) is missing."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.55,
+      "directness_score": 1.0,
+      "corroboration_score": 0.75,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.785,
+      "rating": "HIGH",
+      "modality_neutrality_flag": true
+    },
+    "EV-A-02": {
+      "evidence_id": "EV-A-02",
+      "reliability_score": 82.25,
+      "reliability_label": "High",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 70.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('TEST-REPORT').; Original file/archive reference documented ('flight_test.pdf').; Precise physical/logical reference provided (Section 'Section 4').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 75.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "Corroborated by 1 independent source (faa-tcds).",
+          "missing_information": []
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [70.0]: Identifiable source system/repository ('TEST-REPORT').; Original file/archive reference documented ('flight_test.pdf').; Precise physical/logical reference provided (Section 'Section 4').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [75.0]: Corroborated by 1 independent source (faa-tcds).",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Originating author or organization is unspecified."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.7,
+      "directness_score": 1.0,
+      "corroboration_score": 0.75,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.8225,
+      "rating": "HIGH",
+      "modality_neutrality_flag": true
+    }
+  },
+  "conflicts": [],
+  "suspicion_indicators": [
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-A-01' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-A-01"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-A-02' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-A-02"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-A-01' asserts entity 'Alpha-7 UAV', but entity name is not found in linked evidence 'EV-A-02'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-A-02"
+      ],
+      "affected_claim_ids": [
+        "CLM-A-01"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "[1]",
+      "evidence_id": "EV-A-01",
+      "source_id": "FAA-TCDS",
+      "filename": "alpha7_spec.pdf",
+      "location_locator": "Document body",
+      "formatted_citation": "[1] Source: FAA-TCDS | File: alpha7_spec.pdf | Type: structured | Format: pdf | Evidence ID: EV-A-01",
+      "verifiable_metadata": {
+        "evidence_id": "EV-A-01",
+        "source_id": "FAA-TCDS",
+        "filename": "alpha7_spec.pdf",
+        "source_type": "structured",
+        "format": "pdf",
+        "page_number": null,
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "structured",
+      "format": "pdf",
+      "page_number": null,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Alpha-7 UAV specification: Maximum certified payload capacity is 15.5 kg.",
+      "claim_id": null,
+      "missing_fields": [
+        "page_number"
+      ]
+    },
+    {
+      "citation_id": "[2]",
+      "evidence_id": "EV-A-02",
+      "source_id": "TEST-REPORT",
+      "filename": "flight_test.pdf",
+      "location_locator": "Section 'Section 4'",
+      "formatted_citation": "[2] Source: TEST-REPORT | File: flight_test.pdf | Type: document | Format: pdf | Section 'Section 4' | Evidence ID: EV-A-02",
+      "verifiable_metadata": {
+        "evidence_id": "EV-A-02",
+        "source_id": "TEST-REPORT",
+        "filename": "flight_test.pdf",
+        "source_type": "document",
+        "format": "pdf",
+        "page_number": null,
+        "section": "Section 4",
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "document",
+      "format": "pdf",
+      "page_number": null,
+      "section": "Section 4",
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Flight test report section 4 confirms payload capacity verified at 15.5 kg.",
+      "claim_id": null,
+      "missing_fields": [
+        "page_number"
+      ]
+    }
+  ],
+  "claim_citations": [
+    {
+      "claim_id": "CLM-A-01",
+      "statement": "Alpha-7 UAV payload capacity certified at 15.5 kg",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-A-01",
+          "source_id": "FAA-TCDS",
+          "filename": "alpha7_spec.pdf",
+          "source_type": "structured",
+          "format": "pdf",
+          "page_number": null,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Alpha-7 UAV specification: Maximum certified payload capacity is 15.5 kg.",
+          "claim_id": "CLM-A-01",
+          "formatted_citation": "Source: FAA-TCDS | File: alpha7_spec.pdf | Type: structured | Format: pdf | Evidence ID: EV-A-01",
+          "missing_fields": [
+            "page_number"
+          ]
+        },
+        {
+          "evidence_id": "EV-A-02",
+          "source_id": "TEST-REPORT",
+          "filename": "flight_test.pdf",
+          "source_type": "document",
+          "format": "pdf",
+          "page_number": null,
+          "section": "Section 4",
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Flight test report section 4 confirms payload capacity verified at 15.5 kg.",
+          "claim_id": "CLM-A-01",
+          "formatted_citation": "Source: TEST-REPORT | File: flight_test.pdf | Type: document | Format: pdf | Section 'Section 4' | Evidence ID: EV-A-02",
+          "missing_fields": [
+            "page_number"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-A-01': missing page_number",
+        "Item 'EV-A-02': missing page_number"
+      ],
+      "invalid_evidence_ids": []
+    }
+  ],
+  "reasoning_mode": "ollama_augmented",
+  "llm_attempted": true,
+  "llm_synthesis_used": true,
+  "audit_trail": [
+    "Initiated 7-stage conflict-aware reasoning engine.",
+    "Synthesized natural-language response via local Ollama model 'qwen2.5:7b-instruct' (all sentences accepted)."
+  ]
+}

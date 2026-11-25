@@ -1,0 +1,163 @@
+{
+  "question": "What was the verified payload capacity and completion status for Project Cerberus?",
+  "claims": [
+    {
+      "id": "CLM-01",
+      "statement": "Project Cerberus drone payload capacity is certified at 15.5 kg.",
+      "entity": "Project Cerberus",
+      "property": "payload_capacity",
+      "value": "15.5",
+      "unit": "kg",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-01"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-02",
+      "statement": "Project Cerberus testing was successfully completed on schedule.",
+      "entity": "Project Cerberus",
+      "property": "status",
+      "value": "completed",
+      "unit": null,
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-03",
+      "statement": "Project Cerberus testing failed battery endurance benchmark.",
+      "entity": "Project Cerberus",
+      "property": "status",
+      "value": "failed",
+      "unit": null,
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-03"
+      ],
+      "confidence": 1.0,
+      "polarity": false
+    }
+  ],
+  "evidence_items": [
+    {
+      "id": "EV-01",
+      "content": "Official certification report specifies Project Cerberus drone maximum payload capacity certified at 15.5 kg.",
+      "modality": "document",
+      "directness": "primary",
+      "metadata": {
+        "source_id": "FAA-CERT-2024",
+        "filename": "cerberus_certification.pdf",
+        "file_type": "application/pdf",
+        "page_number": 4,
+        "section": "Payload Specifications",
+        "table_id": null,
+        "image_id": null,
+        "record_id": null,
+        "paragraph": null,
+        "table_name": null,
+        "row_id": null,
+        "url": null,
+        "timestamp": null,
+        "creation_date": null,
+        "modification_date": null,
+        "author": "Federal Aviation Authority",
+        "organization": null,
+        "checksum_hash": "sha256:7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069",
+        "digital_signature": null,
+        "extraction_confidence": 1.0,
+        "custom_attributes": {}
+      },
+      "tags": []
+    },
+    {
+      "id": "EV-02",
+      "content": "Engineering flight log confirms all scheduled test phases completed successfully.",
+      "modality": "document",
+      "directness": "primary",
+      "metadata": {
+        "source_id": "ENG-LOG-2024",
+        "filename": "flight_testing_summary.pdf",
+        "file_type": null,
+        "page_number": 12,
+        "section": "Testing Results",
+        "table_id": null,
+        "image_id": null,
+        "record_id": null,
+        "paragraph": null,
+        "table_name": null,
+        "row_id": null,
+        "url": null,
+        "timestamp": null,
+        "creation_date": null,
+        "modification_date": null,
+        "author": "Chief Test Pilot",
+        "organization": null,
+        "checksum_hash": null,
+        "digital_signature": null,
+        "extraction_confidence": 1.0,
+        "custom_attributes": {}
+      },
+      "tags": []
+    },
+    {
+      "id": "EV-03",
+      "content": "Internal draft QA memo indicates battery endurance failed secondary cold-weather test.",
+      "modality": "document",
+      "directness": "secondary",
+      "metadata": {
+        "source_id": "QA-MEMO-DRAFT",
+        "filename": "qa_memo_prelim.pdf",
+        "file_type": null,
+        "page_number": 2,
+        "section": "Cold Weather Testing",
+        "table_id": null,
+        "image_id": null,
+        "record_id": null,
+        "paragraph": null,
+        "table_name": null,
+        "row_id": null,
+        "url": null,
+        "timestamp": null,
+        "creation_date": null,
+        "modification_date": null,
+        "author": null,
+        "organization": null,
+        "checksum_hash": null,
+        "digital_signature": null,
+        "extraction_confidence": 1.0,
+        "custom_attributes": {}
+      },
+      "tags": []
+    }
+  ],
+  "kg_relationships": [
+    {
+      "source_entity": "Project Cerberus",
+      "relation": "has_certification",
+      "target_entity": "FAA-CERT-2024",
+      "properties": {},
+      "evidence_ids": [
+        "EV-01"
+      ],
+      "confidence": 1.0
+    }
+  ],
+  "context": null,
+  "strict_provenance": true,
+  "min_reliability_threshold": 0.3,
+  "enable_ollama": false,
+  "ollama_model": "llama3",
+  "ollama_endpoint": "http://localhost:11434"
+}
