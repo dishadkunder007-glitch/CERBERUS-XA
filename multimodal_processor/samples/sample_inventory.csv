@@ -1,0 +1,5 @@
+Item ID,Item Name,Quantity (units),Unit Cost ($),Condition
+ITEM-001,High Pressure Valve,250,45.50,New
+ITEM-002,Hydraulic Pump,35,820.00,Certified
+ITEM-003,Filter Cartridge,,12.00,
+ITEM-004,Pressure Sensor,120,65.00,New
