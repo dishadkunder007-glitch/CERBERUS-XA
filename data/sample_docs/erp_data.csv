@@ -1,0 +1,8 @@
+Company,Metric,Value,Unit,Period,Source
+ABC Industries,production,4000,units,January 2026,ERP System
+ABC Industries,revenue,20,lakh,January 2026,ERP System
+ABC Industries,employees,440,persons,January 2026,ERP System
+ABC Industries,capacity_utilization,75,%,January 2026,ERP System
+ABC Industries,net_profit,2.5,lakh,January 2026,ERP System
+XYZ Corporation,production,8000,units,January 2026,ERP System
+XYZ Corporation,revenue,40,lakh,January 2026,ERP System

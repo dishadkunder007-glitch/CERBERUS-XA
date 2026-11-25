@@ -1,0 +1,18 @@
+ABC Industries Annual Production Report - January 2026
+
+Company: ABC Industries
+Report Date: 15 January 2026
+Reporting Period: January 2026
+
+PRODUCTION SUMMARY
+==================
+Total Units Produced: 5,000 units
+Production Capacity Utilization: 85%
+Revenue Generated: ₹25 lakh
+Net Profit: ₹3 lakh
+Employee Count: 450
+
+NOTES:
+- Production target was 5,500 units.
+- Revenue is higher than Q4 2025 by 12%.
+- The company expanded its manufacturing line in December 2025.
