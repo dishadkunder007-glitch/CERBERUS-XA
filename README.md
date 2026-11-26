@@ -1,267 +1,191 @@
-# CERBERUS-XA — Multimodal Evidence Graph & Conflict-Aware Reasoning System
+# CERBERUS-XA — Multimodal Evidence Graph & Conflict-Aware Reasoning
 
-> *"Where Every Modality Can Contradict the Others."*  
-> *"Every Source Has a Voice. Every Claim Faces Verification."*
-
----
-
-## 🛡️ Project Overview
-
-**CERBERUS-XA** is an offline-capable multimodal intelligence investigation platform engineered for defense, fraud examination, and forensic investigation. Unlike conventional chatbot-style question-answering systems that assume input documents are truthful and consistent, CERBERUS-XA assumes **sources may contradict, omit, or misrepresent facts across modalities**.
-
-The system ingests **unstructured PDF documents, high-resolution optical imagery, scanned records, and tabular spreadsheets/CSVs**, extracts atomic claims with spatial/row coordinates, constructs a connected knowledge graph, resolves entity aliases, uncovers cross-modal contradictions, evaluates source reliability without fabricating ungrounded scores, flags adversarial/manipulated content, and delivers traceable, evidence-backed answers.
+> **"Where Every Modality Can Contradict the Others."**  
+> **"Every Source Has a Voice. Every Claim Faces Verification."**
 
 ---
 
-## 🎯 Problem Statement
+## 1. Project Description
 
-Modern intelligence analysts and investigators face an overwhelming volume of multimodal data from disparate origins. Traditional LLM-based tools suffer from critical shortcomings:
-1. **Blind Trust & Hallucination**: Assuming all input text or tabular data is factually consistent.
-2. **Modal Blind Spots**: Inability to reconcile contradictions where text claims one value (e.g. *"$120,000 shipment value"* in a PDF) while a customs receipt image or cargo manifest table specifies another (*"$450,000"*).
-3. **Black-Box Reasoning**: Providing answers without verifiable, coordinate-level citations back to the source bounding box or table cell.
-4. **Vulnerability to Manipulation**: Susceptibility to prompt injections and adversarial data buried within scanned documents or CSV fields.
+**CERBERUS-XA** is an offline-capable multimodal evidence investigation and conflict-aware intelligence platform. Rather than functioning as a generic chatbot or file viewer, it is engineered for forensic auditing, supply-chain verification, and cross-document contradiction analysis.
 
-**CERBERUS-XA resolves this by treating every claim as a node in an adversarial evidence graph, cross-verifying facts across all modalities before rendering a forensic verdict.**
+It ingests **PDF documents, scanned images, optical imagery (PNG/JPG), and structured tabular files (CSV/XLSX/XLS)**, extracts atomic claims with page/row provenance, constructs a connected Knowledge Graph, resolves cross-source entities, detects numerical/temporal/textual contradictions, evaluates 6-dimension source reliability, flags adversarial tampering, and produces traceable, evidence-backed answers (explicitly abstaining with `INSUFFICIENT_EVIDENCE` when evidence is inadequate).
 
 ---
 
-## ✨ Key Features
+## 2. Problem Statement
 
-### 1. Unified 6-Hub Intelligence Command Center
-- **Landing Hub**: Cinematic operational command portal showcasing system capabilities and system health.
-- **Overview & Dashboard**: Real-time stats on ingested documents, active entities, contradiction counts, and audit trails.
-- **Evidence Center**: Multi-format ingestion vault supporting PDF, PNG/JPG, and CSV/XLSX files with live coordinate-level claim extractions.
-- **Knowledge Graph Hub**: Dynamic 2D/3D force-directed relationship topology with fuzzy entity resolution and alias clustering.
-- **Conflict & Trust Analysis**: Cross-modal contradiction radar, evidence reliability matrix, and adversarial prompt-injection scanner.
-- **AI Investigation Hub & Answer Studio**: Natural-language forensic inquiry engine with step-by-step reasoning chains, coordinate citations, and exportable reports (JSON, CSV, PDF, Markdown).
-- **Reports & Audit Trail**: Immutable investigation history with multi-case retention and verification replay.
+Real-world investigations span heterogeneous formats (invoices in PDF, warehouse logs in CSV, inspection notes in scanned images). Conventional RAG or single-modality pipelines suffer from:
+- **Modality Bias**: Favoring clean digital text over scanned/tabular records.
+- **Hidden Contradictions**: Failing to catch discrepancies across independent files (e.g., `500 units` invoiced vs. `450 units` received).
+- **Unverified Hallucinations**: Generating confident answers even when evidence is missing or conflicting.
 
-### 2. Deep Multimodal Processing Pipeline
-- **PDF Extraction**: Text blocks, spatial bounding boxes, page indices, and metadata via PyMuPDF.
-- **Optical Character Recognition (OCR)**: Scanned documents, receipts, badges, and scene images extracted via RapidOCR (ONNX Runtime) with confidence scoring.
-- **Tabular Extraction**: CSV and Excel sheets extracted cell-by-cell with row/column coordinate preservation using Pandas and OpenPyXL.
-
-### 3. Knowledge Graph & Cross-Modal Conflict Detection
-- **Entity Resolution**: Levenshtein distance and RapidFuzz matching to cluster aliases (e.g., *"Nordic Freight Ltd."* vs. *"Nordic-Freight Logistics"*).
-- **Contradiction Engine**: Identifies numeric, temporal, and categorical conflicts across different modalities for the same entity and attribute.
-- **NetworkX Topology**: Visualizes nodes, directed claim edges, and conflict links.
-
-### 4. Conflict-Aware Reasoning & Forensic Verification
-- **Traceable Citations**: Every conclusion cites specific evidence IDs, modalities, bounding boxes, or table rows.
-- **Verdict Classification**: Renders verdicts (*ANSWERED*, *CONFLICT_DETECTED*, *INSUFFICIENT_EVIDENCE*, *ADVERSARIAL_DETECTED*) with calibrated confidence ratios.
-- **Prompt Injection Defense**: Suspicion detector flags attempts to override system instructions inside ingested files.
-- **Dual-Mode Execution**: Live FastAPI backend integration with automatic fallback to high-fidelity simulated demo mode when offline.
+CERBERUS-XA solves this by treating every source equally, surfacing conflicts explicitly, and linking every conclusion to verifiable source coordinates.
 
 ---
 
-## 🏗️ System Architecture
+## 3. Key Features
+
+- **Multimodal Ingestion**: Parses PDFs (`PyMuPDF`), images/scans (`RapidOCR` / `Pillow`), and spreadsheets (`Pandas` / `OpenPyXL`).
+- **Knowledge Graph & Entity Resolution**: Builds a NetworkX multi-relational graph unifying entities, attributes, quantities, sources, support edges (`supports`, `agrees_with`), and contradiction edges (`contradicts`).
+- **Contradiction Detection**: Detects cross-source numerical, temporal, and textual discrepancies.
+- **6-Dimension Source Reliability & Adversarial Defense**: Evaluates provenance, directness, corroboration, consistency, and completeness; flags metadata backdating and prompt-injection patterns.
+- **Conflict-Aware 7-Stage Reasoning**: Synthesizes traceable verdicts (`ANSWERED`, `CONFLICTED`, `INSUFFICIENT_EVIDENCE`) with deterministic offline fallback and optional local Ollama (`qwen2.5:7b-instruct`) synthesis.
+- **Multi-Format Dossier Export**: Exports investigation reports as **Markdown (`.md`)**, **JSON**, **CSV**, and **PDF**.
+- **Dual Theme & Demo/Live Modes**: Supports high-contrast Dark and Light themes plus a pre-loaded Jury Benchmark Demo mode (`Operation Boreas`) alongside Live Ingest mode.
+
+---
+
+## 4. Technology Stack
+
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | React 18, Vite 6, Tailwind CSS, Framer Motion, Axios, Recharts, Lucide Icons |
+| **Unified Backend** | Python 3.10+, FastAPI, Uvicorn, Pydantic v2 |
+| **Multimodal Extraction** | PyMuPDF (`fitz`), RapidOCR (`rapidocr-onnxruntime`), Pillow, Pandas, OpenPyXL |
+| **Knowledge Graph & Matching** | NetworkX, RapidFuzz |
+| **AI Reasoning** | Deterministic 7-Stage Verification Engine + Optional Local Ollama (`qwen2.5:7b-instruct`) |
+| **Frontend Hosting** | Firebase Hosting (Static SPA) |
+
+---
+
+## 5. System Architecture
 
 ```
-+---------------------------------------------------------------------------------------------------+
-|                                        CERBERUS-XA SYSTEM                                         |
-+---------------------------------------------------------------------------------------------------+
-                                                  |
-           +--------------------------------------+--------------------------------------+
-           |                                                                             |
-           v                                                                             v
-+-----------------------------------------+                 +-----------------------------------------+
-|        FRONTEND COMMAND CENTER          |                 |          FASTAPI BACKEND API            |
-|       (React 18 + Vite 6 + Tailwind)    |                 |        (Python 3.10+ / Uvicorn)         |
-|                                         |                 |                                         |
-|  - 6 Intelligence Workspace Hubs        |  REST Contracts |  - Member 2: Multimodal Ingestion       |
-|  - Interactive Network Topology         | <=============> |    (PyMuPDF, RapidOCR, Pandas, PIL)     |
-|  - Real-Time Contradiction Radar        |  (Axios Client) |  - Member 3: Knowledge Graph            |
-|  - Evidence Vault & Modality Explorer   |                 |    (NetworkX, RapidFuzz, ClaimBuilder)  |
-|  - Dual Mode (Live API / Demo Fallback) |                 |  - Member 4: Reasoning & Verification   |
-+-----------------------------------------+                 |    (CitationBuilder, SuspicionDetector) |
-                                                            +-----------------------------------------+
++-------------------------------------------------------------------+
+|               CERBERUS-XA React + Vite UI (Port 5173)             |
+|  Overview | Evidence Center | Knowledge Graph | Conflict & Trust  |
+|               AI Investigation | Reports & Audit                  |
++-------------------------------------------------------------------+
+                                  |  REST API (Axios -> Port 8000)
+                                  v
++-------------------------------------------------------------------+
+|            Unified FastAPI Server (backend/main.py)               |
++-------------------------------------------------------------------+
+   |                              |                              |
+   v                              v                              v
+[Member 2: Multimodal]    [Member 3: Knowledge Graph]   [Member 4: Reasoning]
+backend/multimodal/       backend/knowledge_graph/      backend/reasoning/
+- POST /process-file      - GET /graph                  - POST /investigate
+- POST /process-batch     - GET /conflicts              - POST /reasoning/verify
+- GET /evidence           - GET /entity-resolution      - GET /reliability
+- DELETE /evidence/{id}   - GET /claims                 - GET /adversarial
+                                                        - GET /export-report
 ```
 
 ---
 
-## 📂 Project Folder Structure
+## 6. Project Folder Structure
 
 ```
 CERBERUS-XA/
-├── backend/                        # Python FastAPI Intelligence Backend
-│   ├── main.py                     # Unified FastAPI application entry point
-│   ├── test_pipeline.py            # End-to-end backend integration test
-│   ├── verify_tasks_1_2_3.py       # Verification & regression test suite
-│   ├── multimodal/                 # Member 2: Ingestion & OCR processing
-│   │   ├── processor.py            # Multimodal extractor (PDF, images, tables)
-│   │   ├── models.py               # Extraction schemas & data models
-│   │   └── ocr_engine.py           # RapidOCR ONNX runtime integration
-│   ├── knowledge_graph/            # Member 3: Graph & entity resolution
-│   │   └── src/                    # Graph builder, claim builder, contradiction detector
-│   └── reasoning/                  # Member 4: Conflict-aware reasoning engine
-│       ├── service.py              # Reasoning router & pipeline execution
-│       ├── schemas.py              # Pydantic schemas (ReasoningRequest, EvidenceItem)
-│       ├── citation_builder.py     # Source citation & coordinate linking
-│       ├── suspicion_detector.py   # Adversarial prompt-injection detection
-│       └── tests/                  # Pytest verification suites
-├── src/                            # React 18 Frontend Application
-│   ├── App.jsx                     # Root application with 6-hub router & layout
-│   ├── main.jsx                    # React DOM entry point
-│   ├── index.css                   # Tailwind styles, radar animations & glassmorphism
-│   ├── components/                 # Reusable UI components
-│   │   ├── Navbar.jsx              # Global navigation bar with backend status
-│   │   ├── Sidebar.jsx             # 6 primary intelligence hub navigation
-│   │   ├── RightPanel.jsx          # Live contradiction radar & file feed
-│   │   ├── KnowledgeGraph.jsx      # Force-directed interactive network graph
-│   │   └── ReportViewer.jsx        # Forensic dossier viewer with export actions
-│   ├── context/
-│   │   └── InvestigationContext.jsx# Centralized investigation state & API bindings
-│   ├── pages/                      # 20 Modular Intelligence Page Views
-│   │   ├── LandingPage.jsx         # Cinematic hero showcase
-│   │   ├── Dashboard.jsx           # Overview metrics & activity feeds
-│   │   ├── EvidenceCenterPage.jsx  # Unified ingestion vault & previews
-│   │   ├── KnowledgeGraphHubPage.jsx# Graph exploration & entity resolution
-│   │   ├── ConflictTrustPage.jsx   # Contradiction lab & adversarial scanner
-│   │   ├── AIInvestigationPage.jsx # Natural-language inquiry & reasoning steps
-│   │   └── ReportsAuditPage.jsx    # Audit trail, case history & evaluations
-│   └── services/                   # Axios API service clients
-│       ├── api.js                  # Base Axios configuration & interceptors
-│       ├── evidenceService.js      # File upload, claims, and vault APIs
-│       └── investigationService.js # Investigation query & report export APIs
-├── dist/                           # Production build output (gitignored)
-├── public/                         # Public static web assets
-├── firebase.json                   # Firebase Hosting configuration
-├── .firebaserc                     # Firebase project alias
-├── .env.example                    # Sample environment configuration
-├── package.json                    # Node dependencies and build scripts
-├── requirements.txt                # Python backend dependencies
-├── tailwind.config.js              # Custom theme colors & typography
-└── vite.config.js                  # Vite configuration & server options
+├── backend/
+│   ├── main.py                  # Unified FastAPI entrypoint & pipeline orchestrator
+│   ├── multimodal/              # PDF, Image/OCR, and Table extraction engine
+│   ├── knowledge_graph/         # Entity matching, contradiction detector, NetworkX graph
+│   ├── reasoning/               # 7-stage reasoning, reliability, suspicion & citation builder
+│   ├── verify_deep.py           # End-to-end backend & export verification suite
+│   ├── verify_graph_laptop_x.py # Knowledge Graph 2-file verification
+│   └── verify_conflict_vs_nonconflict.py
+├── src/
+│   ├── components/              # Navbar, Sidebar, RightPanel, KnowledgeGraph, ReportViewer, etc.
+│   ├── context/                 # InvestigationContext (Live & Demo state management)
+│   ├── pages/                   # 6 Command Center hubs + LandingPage
+│   ├── services/                # Axios API clients (evidence, conflict, graph, investigation)
+│   └── data/demoData.js         # Jury Benchmark Demo dataset
+├── sample_evidence/             # Sample CSV evidence files
+├── firebase.json                # Firebase Hosting SPA configuration
+├── requirements.txt             # Consolidated Python backend dependencies
+├── package.json                 # Frontend dependencies & Vite scripts
+└── .env.example                 # Environment variable template
 ```
 
 ---
 
-## 🛠️ Technology Stack
-
-| Layer | Technologies |
-|---|---|
-| **Frontend Framework** | React 18, Vite 6, Tailwind CSS 3.4 |
-| **UI Components & Icons** | Framer Motion (page animations), Lucide React, Recharts |
-| **HTTP Client** | Axios with custom interceptors and timeout management |
-| **Backend Framework** | FastAPI 0.110+, Uvicorn 0.28+, Pydantic 2.0+ |
-| **Multimodal Extraction** | PyMuPDF (PDF), RapidOCR ONNX (OCR), Pillow (Images), Pandas & OpenPyXL (Tables) |
-| **Graph & Entity Resolution** | NetworkX 3.3+, RapidFuzz 3.9+, PyYAML |
-| **Deployment Platforms** | Firebase Hosting (Frontend SPA), Cloud Run / Docker (Backend API) |
-
----
-
-## ⚙️ Environment Variables Setup
-
-Create a `.env` file in the root directory:
-
-```bash
-cp .env.example .env
-```
-
-Configurable options:
-
-```ini
-# Frontend API Base URL (FastAPI Backend)
-VITE_API_BASE_URL=http://localhost:8000
-
-# Enable offline fallback demo data when FastAPI is unreachable
-VITE_ENABLE_DEMO_FALLBACK=true
-```
-
----
-
-## 🚀 Installation & Local Execution
+## 7. Installation Instructions
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher (v24 LTS tested)
-- **Python**: v3.10 or higher (v3.14 tested)
+- **Node.js** 18+ and **npm**
+- **Python** 3.10+
+- *(Optional)* **Ollama** running locally with `qwen2.5:7b-instruct` for LLM-augmented phrasing
 
-### 1. Frontend Setup
+### Frontend Setup
 ```bash
-# Install Node dependencies
 npm install
-
-# Start Vite development server
-npm run dev
 ```
-The frontend command center will be available at `http://localhost:5173`.
 
-### 2. Backend Setup
+### Backend Setup
 ```bash
-# Create and activate virtual environment (optional but recommended)
 python -m venv venv
 # Windows:
 venv\Scripts\activate
-# Linux/macOS:
-source venv/bin/activate
+# macOS/Linux:
+# source venv/bin/activate
 
-# Install Python backend dependencies
 pip install -r requirements.txt
-
-# Start Unified FastAPI Backend server
-python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
 ```
-The interactive Swagger API documentation will be available at `http://localhost:8000/docs`.
 
-### 3. Production Build
+---
+
+## 8. Environment Variable Setup
+
+Copy `.env.example` to `.env` (never commit `.env` to Git):
+```env
+VITE_API_BASE_URL=http://localhost:8000
+VITE_ENABLE_DEMO_FALLBACK=true
+```
+For production Firebase deployments connected to a hosted Python backend, set `VITE_API_BASE_URL` to your HTTPS backend URL before running `npm run build`.
+
+---
+
+## 9. Local Execution Instructions
+
+1. **Start the Unified FastAPI Backend** (Port `8000`):
+   ```bash
+   python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
+   ```
+   Interactive API docs: `http://localhost:8000/docs`
+
+2. **Start the React + Vite Frontend** (Port `5173`):
+   ```bash
+   npm run dev -- --host 0.0.0.0 --port 5173
+   ```
+   Open `http://localhost:5173` in your browser.
+
+3. **Run Verification Suites**:
+   ```bash
+   npm run build
+   python backend/verify_deep.py
+   python backend/verify_conflict_vs_nonconflict.py
+   python backend/verify_graph_laptop_x.py
+   ```
+
+---
+
+## 10. Firebase Deployment Instructions
+
+> **Note on Architecture Compatibility**: Firebase Hosting serves the static React/Vite SPA (`dist/`). Because the Python FastAPI backend uses PyMuPDF, RapidOCR ONNX, and NetworkX, it cannot execute inside Firebase Hosting itself—deploy `backend/` on a Python container host (e.g., Google Cloud Run, Render, or Railway) or run it locally, and point `VITE_API_BASE_URL` to it. Without a live backend URL, the hosted frontend operates in **Demo Mode**.
+
 ```bash
-# Build the optimized production bundle
+npm install -g firebase-tools
+firebase login
 npm run build
-
-# Preview production build locally
-npm run preview
+firebase deploy --only hosting
 ```
 
 ---
 
-## ☁️ Firebase Deployment Instructions
+## 11. Screenshots
 
-CERBERUS-XA is configured for deployment to **Firebase Hosting** for high-performance global CDN delivery with client-side SPA routing.
-
-### 1. Install & Authenticate Firebase CLI
-```bash
-# Log in to your Firebase account
-npx firebase-tools login
-```
-
-### 2. Link Your Firebase Project
-```bash
-# Use your target Firebase project ID
-npx firebase-tools use <your-firebase-project-id>
-```
-
-### 3. Deploy to Firebase Hosting
-```bash
-# Build production bundle
-npm run build
-
-# Deploy hosting assets
-npx firebase-tools deploy --only hosting
-```
-
-Your application will be live at: `https://<your-firebase-project-id>.web.app`.
+- **Cinematic Landing Page**: Three-headed Cerberus sentinel carousel with Dark & Light theme support.
+- **Evidence Center & Vault**: Multi-format drag-and-drop ingestion with per-file deletion and provenance inspection.
+- **Knowledge Graph**: Interactive SVG graph showing entities, supporting sources, consistency status, and conflict edges.
+- **AI Investigation & Reports**: Traceable verdicts with concise reasoning, citations, and `.md`/`.json`/`.csv`/`.pdf` exports.
 
 ---
 
-## 🖼️ Visual Identity & Screenshots
+## 12. Future Enhancements
 
-The platform features a defense-grade dark palette (`#050A16`) with electric cyan accents (`#36D8F2`), gold highlights (`#F5B942`), and amber conflict indicators (`#FFB547`).
-
-- **Cinematic Guardian Artwork**: High-resolution three-headed robotic guardian at `src/assets/cerberus-three-heads.png`.
-- **Radar Scan Visualizer**: Real-time rotating radar scanning active evidence for anomalies.
-- **Interactive Force Graph**: Dynamic physics-based entity relationship mapping.
-
----
-
-## 🔮 Future Enhancements
-
-- [ ] **Real-Time WebRTC Video Stream Analysis**: Frame-by-frame contradiction tagging in video feeds.
-- [ ] **Zero-Knowledge Evidence Proofs**: Cryptographic proofs of document authenticity without disclosing sensitive content.
-- [ ] **Collaborative Multi-Analyst Dossier Rooms**: Real-time shared investigation canvases.
-- [ ] **Containerized Docker Compose Setup**: Single-command orchestration for frontend, FastAPI, Ollama LLM, and Redis cache.
-
----
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
+- Cloud Run / Docker containerization for one-click cloud backend deployment alongside Firebase Hosting.
+- Persistent database storage (PostgreSQL / Firestore) for multi-user case history across sessions.
+- Asynchronous background job queue for very large multi-hundred-page PDF batches.
