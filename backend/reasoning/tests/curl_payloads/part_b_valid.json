@@ -1,0 +1,33 @@
+{
+  "question": "What is the certified payload capacity of the Alpha-7 UAV?",
+  "claims": [
+    {
+      "id": "CLM-01",
+      "statement": "Alpha-7 UAV certified payload capacity is 15.5 kg.",
+      "entity": "Alpha-7 UAV",
+      "property": "payload_capacity",
+      "value": "15.5",
+      "unit": "kg",
+      "evidence_ids": [
+        "EV-LIVE-01"
+      ],
+      "polarity": true
+    }
+  ],
+  "evidence_items": [
+    {
+      "id": "EV-LIVE-01",
+      "content": "Official FAA Type Certificate for Alpha-7 UAV: maximum payload 15.5 kg.",
+      "modality": "document",
+      "directness": "primary",
+      "metadata": {
+        "source_id": "FAA-TCDS",
+        "filename": "alpha7_tcds.pdf",
+        "page_number": 4,
+        "author": "Federal Aviation Administration",
+        "checksum_hash": "sha256:7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069"
+      }
+    }
+  ],
+  "enable_ollama": false
+}

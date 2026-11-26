@@ -1,0 +1,778 @@
+{
+  "question": "What was Cyberdyne Q3 reported revenue?",
+  "status": "CONFLICTED",
+  "conclusion_type": "conflicting",
+  "answer": "Conflicted evidence: A definitive answer to 'What was Cyberdyne Q3 reported revenue?' cannot be established due to unresolved contradictions between sources: [CLM-OCR vs CLM-TABLE: Numerical discrepancy for property 'revenue': 10.0 $M vs 25.0 $M.]; [CLM-OCR vs CLM-DOC: Numerical discrepancy for property 'revenue': 10.0 $M vs 15.0 $M.].",
+  "summary": "Evaluation halted on unresolved conflict. Contradictory evidence was detected across independent records. Adjudication cannot be forced without secondary ground truth.",
+  "supporting_claims": [
+    {
+      "id": "CLM-OCR",
+      "statement": "Cyberdyne Q3 revenue was $10M according to scanned receipt.",
+      "entity": "Cyberdyne",
+      "property": "revenue",
+      "value": "10.0",
+      "unit": "$M",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-OCR"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-TABLE",
+      "statement": "Cyberdyne Q3 revenue was $25M per ledger table.",
+      "entity": "Cyberdyne",
+      "property": "revenue",
+      "value": "25.0",
+      "unit": "$M",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-TABLE"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-DOC",
+      "statement": "Cyberdyne Q3 revenue was $15M in SEC 10-Q filing.",
+      "entity": "Cyberdyne",
+      "property": "revenue",
+      "value": "15.0",
+      "unit": "$M",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-DOC"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "opposing_claims": [
+    {
+      "id": "CLM-TABLE",
+      "statement": "Cyberdyne Q3 revenue was $25M per ledger table.",
+      "entity": "Cyberdyne",
+      "property": "revenue",
+      "value": "25.0",
+      "unit": "$M",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-TABLE"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-DOC",
+      "statement": "Cyberdyne Q3 revenue was $15M in SEC 10-Q filing.",
+      "entity": "Cyberdyne",
+      "property": "revenue",
+      "value": "15.0",
+      "unit": "$M",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-DOC"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "claim_a_id": "CLM-OCR",
+      "claim_b_id": "CLM-TABLE",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'revenue': 10.0 $M vs 25.0 $M.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('$m'): 10.0 vs 25.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.70, Claim B: 0.67, gap: 0.04 < 0.25 or threshold unmet)."
+    },
+    {
+      "claim_a_id": "CLM-OCR",
+      "claim_b_id": "CLM-DOC",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'revenue': 10.0 $M vs 15.0 $M.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('$m'): 10.0 vs 15.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.70, Claim B: 0.70, gap: 0.00 < 0.25 or threshold unmet)."
+    },
+    {
+      "claim_a_id": "CLM-TABLE",
+      "claim_b_id": "CLM-DOC",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'revenue': 25.0 $M vs 15.0 $M.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('$m'): 25.0 vs 15.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.67, Claim B: 0.70, gap: 0.04 < 0.25 or threshold unmet)."
+    }
+  ],
+  "reasoning_steps": [
+    "Stage 1 (Question Understanding): Identified target entity='Cyberdyne Q3', property='revenue', time_constraint='Q3', query_type='ATTRIBUTE_LOOKUP'.",
+    "Stage 2 (Evidence Grouping): Grouped 3 evidence item(s) across 1 entities, 3 distinct sources, and 0 temporal snapshots.",
+    "Stage 3 (Supporting Evidence): Identified 3 supporting claim(s) backed by 3 evidence item(s) (EV-DOC, EV-OCR, EV-TABLE).",
+    "Stage 4 (Contradictory Evidence): Identified 2 opposing claim(s) backed by 2 evidence item(s) (EV-DOC, EV-TABLE).",
+    "Stage 5 (Context Analysis): Unresolved factual deadlock between CLM-OCR and CLM-TABLE: Numerical discrepancy for property 'revenue': 10.0 $M vs 25.0 $M.",
+    "Stage 5 (Context Analysis): Unresolved factual deadlock between CLM-OCR and CLM-DOC: Numerical discrepancy for property 'revenue': 10.0 $M vs 15.0 $M.",
+    "Stage 5 (Context Analysis): Unresolved factual deadlock between CLM-TABLE and CLM-DOC: Numerical discrepancy for property 'revenue': 25.0 $M vs 15.0 $M.",
+    "Stage 6 (Evidence Sufficiency): Sufficient relevant evidence identified (3 supporting, 2 opposing).",
+    "Stage 7 (Conclusion): Reached terminal status 'CONFLICTED' with calibrated confidence 0.15."
+  ],
+  "assumptions": [],
+  "limitations": [],
+  "confidence": 0.15,
+  "confidence_score": 0.15,
+  "confidence_explanation": "Confidence strictly limited to 0.15 due to 3 active unresolved contradiction(s). Base supporting reliability (0.69) penalized by opposing evidence (0.68). Epistemic assessment reflecting evidentiary deadlock, not statistical probability of truth.",
+  "is_insufficient_evidence": false,
+  "facts": [
+    "[Disputed Claim] Cyberdyne Q3 revenue was $10M according to scanned receipt. (Disputed by contradictory records; Citing: EV-OCR)",
+    "[Disputed Claim] Cyberdyne Q3 revenue was $25M per ledger table. (Disputed by contradictory records; Citing: EV-TABLE)",
+    "[Disputed Claim] Cyberdyne Q3 revenue was $15M in SEC 10-Q filing. (Disputed by contradictory records; Citing: EV-DOC)"
+  ],
+  "inferences": [
+    "Adjudication deadlock: Opposing sources possess non-dispositive or divergent authority."
+  ],
+  "unknowns": [
+    "Definitive primary source adjudication needed to resolve conflicting records."
+  ],
+  "supporting_evidence_ids": [
+    "EV-DOC",
+    "EV-OCR",
+    "EV-TABLE"
+  ],
+  "opposing_evidence_ids": [
+    "EV-DOC",
+    "EV-TABLE"
+  ],
+  "evidence_reliability": {
+    "EV-OCR": {
+      "evidence_id": "EV-OCR",
+      "reliability_score": 70.25,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 50.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('OCR-SCAN-01').; Precise physical/logical reference provided (Image 'IMG-0042').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Original filename or archive reference is absent.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [50.0]: Identifiable source system/repository ('OCR-SCAN-01').; Precise physical/logical reference provided (Image 'IMG-0042').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'image' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Original filename or archive reference is absent.",
+        "Originating author or organization is unspecified."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.5,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.7025,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    },
+    "EV-TABLE": {
+      "evidence_id": "EV-TABLE",
+      "reliability_score": 66.5,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 35.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('LEDGER-CSV').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Original filename or archive reference is absent.",
+            "Precise locator (page, section, table, or record) is missing.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [35.0]: Identifiable source system/repository ('LEDGER-CSV').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'table' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Original filename or archive reference is absent.",
+        "Originating author or organization is unspecified.",
+        "Precise locator (page, section, table, or record) is missing."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.35,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.665,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    },
+    "EV-DOC": {
+      "evidence_id": "EV-DOC",
+      "reliability_score": 70.25,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 50.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('SEC-10Q').; Precise physical/logical reference provided (Page 18).",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Original filename or archive reference is absent.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [50.0]: Identifiable source system/repository ('SEC-10Q').; Precise physical/logical reference provided (Page 18).",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Original filename or archive reference is absent.",
+        "Originating author or organization is unspecified."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.5,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.7025,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    }
+  },
+  "conflicts": [
+    {
+      "claim_a_id": "CLM-OCR",
+      "claim_b_id": "CLM-TABLE",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'revenue': 10.0 $M vs 25.0 $M.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('$m'): 10.0 vs 25.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.70, Claim B: 0.67, gap: 0.04 < 0.25 or threshold unmet)."
+    },
+    {
+      "claim_a_id": "CLM-OCR",
+      "claim_b_id": "CLM-DOC",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'revenue': 10.0 $M vs 15.0 $M.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('$m'): 10.0 vs 15.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.70, Claim B: 0.70, gap: 0.00 < 0.25 or threshold unmet)."
+    },
+    {
+      "claim_a_id": "CLM-TABLE",
+      "claim_b_id": "CLM-DOC",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'revenue': 25.0 $M vs 15.0 $M.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('$m'): 25.0 vs 15.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.67, Claim B: 0.70, gap: 0.04 < 0.25 or threshold unmet)."
+    }
+  ],
+  "suspicion_indicators": [
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-OCR' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-OCR"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-OCR' asserts entity 'Cyberdyne', but entity name is not found in linked evidence 'EV-OCR'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-OCR"
+      ],
+      "affected_claim_ids": [
+        "CLM-OCR"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-TABLE' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-TABLE"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-TABLE' asserts entity 'Cyberdyne', but entity name is not found in linked evidence 'EV-TABLE'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-TABLE"
+      ],
+      "affected_claim_ids": [
+        "CLM-TABLE"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-DOC' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-DOC"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-DOC' asserts entity 'Cyberdyne', but entity name is not found in linked evidence 'EV-DOC'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-DOC"
+      ],
+      "affected_claim_ids": [
+        "CLM-DOC"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "[1]",
+      "evidence_id": "EV-OCR",
+      "source_id": "OCR-SCAN-01",
+      "filename": null,
+      "location_locator": "Image 'IMG-0042'",
+      "formatted_citation": "[1] Source: OCR-SCAN-01 | Type: image | Image 'IMG-0042' | Evidence ID: EV-OCR",
+      "verifiable_metadata": {
+        "evidence_id": "EV-OCR",
+        "source_id": "OCR-SCAN-01",
+        "filename": null,
+        "source_type": "image",
+        "format": null,
+        "page_number": null,
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": "IMG-0042",
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "image",
+      "format": null,
+      "page_number": null,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": "IMG-0042",
+      "url": null,
+      "extracted_text": "Receipt OCR extract: Q3 Revenue $10M.",
+      "claim_id": null,
+      "missing_fields": [
+        "filename"
+      ]
+    },
+    {
+      "citation_id": "[2]",
+      "evidence_id": "EV-TABLE",
+      "source_id": "LEDGER-CSV",
+      "filename": null,
+      "location_locator": "Table 'Quarterly_Summary', Row/Record '12'",
+      "formatted_citation": "[2] Source: LEDGER-CSV | Type: table | Format: table | Table 'Quarterly_Summary' | Row/Record '12' | Evidence ID: EV-TABLE",
+      "verifiable_metadata": {
+        "evidence_id": "EV-TABLE",
+        "source_id": "LEDGER-CSV",
+        "filename": null,
+        "source_type": "table",
+        "format": "table",
+        "page_number": null,
+        "section": null,
+        "table_name": "Quarterly_Summary",
+        "row_id": "12",
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "table",
+      "format": "table",
+      "page_number": null,
+      "section": null,
+      "paragraph": null,
+      "table_name": "Quarterly_Summary",
+      "row_id": "12",
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Ledger Table Row 12: Q3 Revenue $25M.",
+      "claim_id": null,
+      "missing_fields": [
+        "filename"
+      ]
+    },
+    {
+      "citation_id": "[3]",
+      "evidence_id": "EV-DOC",
+      "source_id": "SEC-10Q",
+      "filename": null,
+      "location_locator": "Page 18",
+      "formatted_citation": "[3] Source: SEC-10Q | Type: document | Page 18 | Evidence ID: EV-DOC",
+      "verifiable_metadata": {
+        "evidence_id": "EV-DOC",
+        "source_id": "SEC-10Q",
+        "filename": null,
+        "source_type": "document",
+        "format": null,
+        "page_number": "18",
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "document",
+      "format": null,
+      "page_number": 18,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "SEC 10-Q Form: Q3 Revenue was $15M.",
+      "claim_id": null,
+      "missing_fields": [
+        "filename"
+      ]
+    }
+  ],
+  "claim_citations": [
+    {
+      "claim_id": "CLM-OCR",
+      "statement": "Cyberdyne Q3 revenue was $10M according to scanned receipt.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-OCR",
+          "source_id": "OCR-SCAN-01",
+          "filename": null,
+          "source_type": "image",
+          "format": null,
+          "page_number": null,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": "IMG-0042",
+          "url": null,
+          "extracted_text": "Receipt OCR extract: Q3 Revenue $10M.",
+          "claim_id": "CLM-OCR",
+          "formatted_citation": "Source: OCR-SCAN-01 | Type: image | Image 'IMG-0042' | Evidence ID: EV-OCR",
+          "missing_fields": [
+            "filename"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-OCR': missing filename"
+      ],
+      "invalid_evidence_ids": []
+    },
+    {
+      "claim_id": "CLM-TABLE",
+      "statement": "Cyberdyne Q3 revenue was $25M per ledger table.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-TABLE",
+          "source_id": "LEDGER-CSV",
+          "filename": null,
+          "source_type": "table",
+          "format": "table",
+          "page_number": null,
+          "section": null,
+          "paragraph": null,
+          "table_name": "Quarterly_Summary",
+          "row_id": "12",
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Ledger Table Row 12: Q3 Revenue $25M.",
+          "claim_id": "CLM-TABLE",
+          "formatted_citation": "Source: LEDGER-CSV | Type: table | Format: table | Table 'Quarterly_Summary' | Row/Record '12' | Evidence ID: EV-TABLE",
+          "missing_fields": [
+            "filename"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-TABLE': missing filename"
+      ],
+      "invalid_evidence_ids": []
+    },
+    {
+      "claim_id": "CLM-DOC",
+      "statement": "Cyberdyne Q3 revenue was $15M in SEC 10-Q filing.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-DOC",
+          "source_id": "SEC-10Q",
+          "filename": null,
+          "source_type": "document",
+          "format": null,
+          "page_number": 18,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "SEC 10-Q Form: Q3 Revenue was $15M.",
+          "claim_id": "CLM-DOC",
+          "formatted_citation": "Source: SEC-10Q | Type: document | Page 18 | Evidence ID: EV-DOC",
+          "missing_fields": [
+            "filename"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-DOC': missing filename"
+      ],
+      "invalid_evidence_ids": []
+    }
+  ],
+  "reasoning_mode": "deterministic",
+  "llm_attempted": false,
+  "llm_synthesis_used": false,
+  "audit_trail": [
+    "Initiated 7-stage conflict-aware reasoning engine."
+  ]
+}

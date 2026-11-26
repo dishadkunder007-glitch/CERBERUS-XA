@@ -1,0 +1,1955 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CERBERUS-XA Reasoning API",
+    "description": "Member 4: AI Reasoning & Evidence Verification Module",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/reasoning/health": {
+      "get": {
+        "tags": [
+          "Reasoning & Verification"
+        ],
+        "summary": "Health Check",
+        "description": "Health check endpoint confirming module readiness and Ollama status.",
+        "operationId": "health_check_reasoning_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Health Check Reasoning Health Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reasoning/verify": {
+      "post": {
+        "tags": [
+          "Reasoning & Verification"
+        ],
+        "summary": "Verify Evidence",
+        "description": "Primary reasoning endpoint executing conflict-aware deliberation and citation building.",
+        "operationId": "verify_evidence_reasoning_verify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReasoningRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReasoningResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reasoning/evaluate_reliability": {
+      "post": {
+        "tags": [
+          "Reasoning & Verification"
+        ],
+        "summary": "Evaluate Reliability",
+        "description": "Dedicated endpoint to evaluate reliability of standalone evidence items.",
+        "operationId": "evaluate_reliability_reasoning_evaluate_reliability_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/ReasoningRequest"
+                  },
+                  {
+                    "items": {
+                      "$ref": "#/components/schemas/EvidenceItem"
+                    },
+                    "type": "array"
+                  }
+                ],
+                "title": "Request"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Evaluate Reliability Reasoning Evaluate Reliability Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Root"
+        ],
+        "summary": "Root",
+        "description": "Root endpoint linking to OpenAPI documentation and service health.",
+        "operationId": "root__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Root  Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Citation": {
+        "properties": {
+          "citation_id": {
+            "type": "string",
+            "title": "Citation Id",
+            "description": "Numeric or labeled citation reference (e.g. [1])"
+          },
+          "evidence_id": {
+            "type": "string",
+            "title": "Evidence Id",
+            "description": "ID of referenced evidence"
+          },
+          "source_id": {
+            "type": "string",
+            "title": "Source Id",
+            "description": "Source repository or system ID"
+          },
+          "filename": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filename"
+          },
+          "location_locator": {
+            "type": "string",
+            "title": "Location Locator",
+            "description": "Formatted location e.g. 'Page 4, Sec. 2.1'"
+          },
+          "formatted_citation": {
+            "type": "string",
+            "title": "Formatted Citation",
+            "description": "Human-readable citation string"
+          },
+          "verifiable_metadata": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Verifiable Metadata"
+          },
+          "source_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Type"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Format"
+          },
+          "page_number": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page Number"
+          },
+          "section": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section"
+          },
+          "paragraph": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Paragraph"
+          },
+          "table_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Table Name"
+          },
+          "row_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Row Id"
+          },
+          "image_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Id"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          },
+          "extracted_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extracted Text"
+          },
+          "claim_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Claim Id"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Fields"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "citation_id",
+          "evidence_id",
+          "source_id",
+          "location_locator",
+          "formatted_citation"
+        ],
+        "title": "Citation"
+      },
+      "CitationItem": {
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "title": "Evidence Id",
+            "description": "Unique evidence identifier"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Id",
+            "description": "Source repository or system ID"
+          },
+          "filename": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filename",
+            "description": "Original filename"
+          },
+          "source_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Type",
+            "description": "Source format/modality: document, image, table, structured, scan, record, audio, other"
+          },
+          "format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Format",
+            "description": "Detailed format or file type: pdf, csv, png, tiff, json, etc."
+          },
+          "page_number": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page Number",
+            "description": "Page number"
+          },
+          "section": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section",
+            "description": "Section or chapter name"
+          },
+          "paragraph": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Paragraph",
+            "description": "Paragraph index"
+          },
+          "table_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Table Name",
+            "description": "Table name or identifier"
+          },
+          "row_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Row Id",
+            "description": "Row identifier or record index"
+          },
+          "image_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Id",
+            "description": "Image/figure identifier"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url",
+            "description": "Source URL if supplied"
+          },
+          "extracted_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extracted Text",
+            "description": "Extracted content excerpt"
+          },
+          "claim_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Claim Id",
+            "description": "Associated claim ID"
+          },
+          "formatted_citation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Formatted Citation",
+            "description": "Standard citation representation"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Fields",
+            "description": "Missing citation metadata for this reference"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "evidence_id"
+        ],
+        "title": "CitationItem"
+      },
+      "Claim": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Unique claim identifier (e.g. CLM-001)"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Statement",
+            "description": "Asserted claim statement"
+          },
+          "entity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Entity",
+            "description": "Target entity or subject"
+          },
+          "property": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Property",
+            "description": "Observed property or attribute"
+          },
+          "value": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value",
+            "description": "Asserted value or status"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit",
+            "description": "Unit of measurement if applicable"
+          },
+          "timestamp": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timestamp",
+            "description": "Timestamp asserted for the claim"
+          },
+          "time_period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Time Period",
+            "description": "Time range or epoch (e.g. 'FY2023', 'Q3')"
+          },
+          "scope": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scope",
+            "description": "Geographic, organizational, or domain scope"
+          },
+          "evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence Ids",
+            "description": "List of evidence IDs supporting or containing this claim"
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "description": "Confidence of the claim extraction",
+            "default": 1.0
+          },
+          "polarity": {
+            "type": "boolean",
+            "title": "Polarity",
+            "description": "True for affirmation, False for negation",
+            "default": true
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "id",
+          "statement"
+        ],
+        "title": "Claim"
+      },
+      "ClaimCitation": {
+        "properties": {
+          "claim_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Claim Id",
+            "description": "Claim identifier"
+          },
+          "statement": {
+            "type": "string",
+            "title": "Statement",
+            "description": "Asserted claim statement"
+          },
+          "polarity": {
+            "type": "boolean",
+            "title": "Polarity",
+            "description": "True for supporting, False for opposing/conflicting",
+            "default": true
+          },
+          "citations": {
+            "items": {
+              "$ref": "#/components/schemas/CitationItem"
+            },
+            "type": "array",
+            "title": "Citations",
+            "description": "Traceable citations grounding this statement"
+          },
+          "missing_metadata": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Metadata",
+            "description": "Missing citation metadata across referenced items"
+          },
+          "invalid_evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Invalid Evidence Ids",
+            "description": "Referenced evidence IDs not found in manifest"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "statement"
+        ],
+        "title": "ClaimCitation"
+      },
+      "ConclusionType": {
+        "type": "string",
+        "enum": [
+          "supported",
+          "refuted",
+          "inconclusive",
+          "insufficient_evidence",
+          "conflicting"
+        ],
+        "title": "ConclusionType"
+      },
+      "ConflictPair": {
+        "properties": {
+          "claim_a_id": {
+            "type": "string",
+            "title": "Claim A Id"
+          },
+          "claim_b_id": {
+            "type": "string",
+            "title": "Claim B Id"
+          },
+          "conflict_type": {
+            "$ref": "#/components/schemas/ConflictType"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "conflicting_attributes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Conflicting Attributes"
+          },
+          "temporal_resolution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Temporal Resolution"
+          },
+          "unit_resolution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit Resolution"
+          },
+          "scope_resolution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scope Resolution"
+          },
+          "is_resolved": {
+            "type": "boolean",
+            "title": "Is Resolved",
+            "default": false
+          },
+          "resolution_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolution Reason"
+          }
+        },
+        "type": "object",
+        "required": [
+          "claim_a_id",
+          "claim_b_id",
+          "conflict_type",
+          "description"
+        ],
+        "title": "ConflictPair"
+      },
+      "ConflictType": {
+        "type": "string",
+        "enum": [
+          "agreement",
+          "contradiction",
+          "partial_contradiction",
+          "unresolved_conflict",
+          "no_overlap"
+        ],
+        "title": "ConflictType"
+      },
+      "CriterionScore": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "Name of the criterion (e.g. provenance, directness, etc.)"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score",
+            "description": "Criterion score (0-100) or None if unassessed"
+          },
+          "weight": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Weight",
+            "description": "Assigned criterion weight as a fraction of 1.0"
+          },
+          "is_assessed": {
+            "type": "boolean",
+            "title": "Is Assessed",
+            "description": "Whether criterion was evaluated",
+            "default": true
+          },
+          "explanation": {
+            "type": "string",
+            "title": "Explanation",
+            "description": "Transparent explanation of the score"
+          },
+          "missing_information": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Information",
+            "description": "Missing details relevant to this criterion"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "weight",
+          "explanation"
+        ],
+        "title": "CriterionScore"
+      },
+      "DirectnessLevel": {
+        "type": "string",
+        "enum": [
+          "primary",
+          "secondary",
+          "hearsay",
+          "derived",
+          "unverified"
+        ],
+        "title": "DirectnessLevel"
+      },
+      "EvidenceItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "Unique evidence item identifier (e.g. EV-001)"
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Content",
+            "description": "Extracted content text or summary"
+          },
+          "modality": {
+            "$ref": "#/components/schemas/EvidenceModality",
+            "description": "Source modality",
+            "default": "document"
+          },
+          "directness": {
+            "$ref": "#/components/schemas/DirectnessLevel",
+            "description": "Directness level",
+            "default": "primary"
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/EvidenceMetadata",
+            "description": "Traceable metadata for citation and provenance"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tags",
+            "description": "Categorical or semantic tags"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "id",
+          "content",
+          "metadata"
+        ],
+        "title": "EvidenceItem"
+      },
+      "EvidenceMetadata": {
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "title": "Source Id",
+            "description": "Unique identifier for the source system/archive"
+          },
+          "filename": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filename",
+            "description": "Original filename if applicable"
+          },
+          "file_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Type",
+            "description": "MIME type or file extension"
+          },
+          "source_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Type",
+            "description": "Explicit source format/modality override"
+          },
+          "page_number": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page Number",
+            "description": "1-indexed page number"
+          },
+          "section": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Section",
+            "description": "Header, chapter, or section name"
+          },
+          "table_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Table Id",
+            "description": "Identifier of the specific table"
+          },
+          "image_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Image Id",
+            "description": "Identifier of the image/diagram"
+          },
+          "record_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record Id",
+            "description": "Database record or row index"
+          },
+          "paragraph": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Paragraph",
+            "description": "1-indexed paragraph number"
+          },
+          "table_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Table Name",
+            "description": "Table name if applicable"
+          },
+          "row_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Row Id",
+            "description": "Row identifier or index"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url",
+            "description": "Source web or repository URL"
+          },
+          "timestamp": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Timestamp",
+            "description": "Content timestamp"
+          },
+          "creation_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Creation Date",
+            "description": "Metadata creation timestamp"
+          },
+          "modification_date": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Modification Date",
+            "description": "Metadata modification timestamp"
+          },
+          "author": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Author",
+            "description": "Document author or recording party"
+          },
+          "organization": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Organization",
+            "description": "Originating organization"
+          },
+          "checksum_hash": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Checksum Hash",
+            "description": "Cryptographic hash (SHA256, MD5)"
+          },
+          "digital_signature": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Digital Signature",
+            "description": "Signature status or public key ID"
+          },
+          "extraction_confidence": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extraction Confidence",
+            "description": "OCR/Parser confidence",
+            "default": 1.0
+          },
+          "custom_attributes": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Custom Attributes",
+            "description": "Arbitrary member metadata"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "source_id"
+        ],
+        "title": "EvidenceMetadata"
+      },
+      "EvidenceModality": {
+        "type": "string",
+        "enum": [
+          "document",
+          "image",
+          "table",
+          "structured",
+          "audio",
+          "scan",
+          "record",
+          "other"
+        ],
+        "title": "EvidenceModality"
+      },
+      "EvidenceReliabilityResult": {
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "title": "Evidence Id",
+            "description": "Identifier of evaluated evidence item"
+          },
+          "reliability_score": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Reliability Score",
+            "description": "Overall reliability score (0-100)"
+          },
+          "reliability_label": {
+            "$ref": "#/components/schemas/ReliabilityLabel",
+            "description": "Categorical label: High, Moderate, Low, Unassessed"
+          },
+          "criteria_scores": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/CriterionScore"
+            },
+            "type": "object",
+            "title": "Criteria Scores",
+            "description": "Detailed breakdown of scores per criterion"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reasons",
+            "description": "Explanations justifying the scoring across dimensions"
+          },
+          "missing_information": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Information",
+            "description": "Identified missing details and gaps"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations",
+            "description": "Epistemic limitations and non-prejudicial safeguards"
+          },
+          "traceability_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Traceability Score",
+            "default": 0.0
+          },
+          "directness_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Directness Score",
+            "default": 0.0
+          },
+          "corroboration_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Corroboration Score",
+            "default": 0.0
+          },
+          "consistency_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Consistency Score",
+            "default": 0.0
+          },
+          "completeness_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Completeness Score",
+            "default": 0.0
+          },
+          "overall_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Overall Score",
+            "default": 0.0
+          },
+          "rating": {
+            "$ref": "#/components/schemas/ReliabilityRating",
+            "default": "MEDIUM"
+          },
+          "modality_neutrality_flag": {
+            "type": "boolean",
+            "title": "Modality Neutrality Flag",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "reliability_score",
+          "reliability_label",
+          "criteria_scores"
+        ],
+        "title": "EvidenceReliabilityResult"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "IndicatorCategory": {
+        "type": "string",
+        "enum": [
+          "provenance",
+          "temporal",
+          "metadata_consistency",
+          "content_integrity",
+          "contradiction",
+          "duplication",
+          "extraction",
+          "security"
+        ],
+        "title": "IndicatorCategory"
+      },
+      "KGRelationship": {
+        "properties": {
+          "source_entity": {
+            "type": "string",
+            "title": "Source Entity",
+            "description": "Subject node in Knowledge Graph"
+          },
+          "relation": {
+            "type": "string",
+            "title": "Relation",
+            "description": "Edge type or predicate relation"
+          },
+          "target_entity": {
+            "type": "string",
+            "title": "Target Entity",
+            "description": "Object node in Knowledge Graph"
+          },
+          "properties": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Properties",
+            "description": "Edge properties (e.g. timestamp, weight, scope)"
+          },
+          "evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Evidence Ids",
+            "description": "Evidence items supporting this relationship"
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "description": "Extraction/Graph confidence",
+            "default": 1.0
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "source_entity",
+          "relation",
+          "target_entity"
+        ],
+        "title": "KGRelationship",
+        "description": "Knowledge Graph edge model conforming to Member 3 output contract."
+      },
+      "ReasoningRequest": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Question",
+            "description": "Question, query, or hypothesis to evaluate"
+          },
+          "claims": {
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            },
+            "type": "array",
+            "title": "Claims",
+            "description": "Extracted claims to analyze"
+          },
+          "evidence_items": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceItem"
+            },
+            "type": "array",
+            "title": "Evidence Items",
+            "description": "All retrieved evidence pieces"
+          },
+          "kg_relationships": {
+            "items": {
+              "$ref": "#/components/schemas/KGRelationship"
+            },
+            "type": "array",
+            "title": "Kg Relationships",
+            "description": "Knowledge graph edges from Member 3"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context",
+            "description": "Optional background domain context"
+          },
+          "strict_provenance": {
+            "type": "boolean",
+            "title": "Strict Provenance",
+            "description": "Enforce strict metadata citation checks",
+            "default": true
+          },
+          "min_reliability_threshold": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Min Reliability Threshold",
+            "description": "Minimum reliability to treat as factual evidence",
+            "default": 0.3
+          },
+          "enable_ollama": {
+            "type": "boolean",
+            "title": "Enable Ollama",
+            "description": "Enable local Ollama model if available",
+            "default": false
+          },
+          "ollama_model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ollama Model",
+            "description": "Ollama model identifier",
+            "default": "qwen2.5:7b-instruct"
+          },
+          "ollama_endpoint": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ollama Endpoint",
+            "description": "Local Ollama HTTP endpoint",
+            "default": "http://localhost:11434"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "question"
+        ],
+        "title": "ReasoningRequest"
+      },
+      "ReasoningResponse": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "title": "Question"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ReasoningStatus",
+            "description": "Core reasoning conclusion status",
+            "default": "ANSWERED"
+          },
+          "conclusion_type": {
+            "$ref": "#/components/schemas/ConclusionType",
+            "default": "supported"
+          },
+          "answer": {
+            "type": "string",
+            "title": "Answer"
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary",
+            "description": "Clear summary of evidence and decision factors",
+            "default": ""
+          },
+          "supporting_claims": {
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            },
+            "type": "array",
+            "title": "Supporting Claims",
+            "description": "Claims supporting the conclusion"
+          },
+          "opposing_claims": {
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            },
+            "type": "array",
+            "title": "Opposing Claims",
+            "description": "Claims opposing or contradicting the conclusion"
+          },
+          "unresolved_conflicts": {
+            "items": {
+              "$ref": "#/components/schemas/ConflictPair"
+            },
+            "type": "array",
+            "title": "Unresolved Conflicts",
+            "description": "Unresolved contradictions"
+          },
+          "reasoning_steps": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reasoning Steps",
+            "description": "Concise evidence-based stage explanations"
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions",
+            "description": "Explicit assumptions made during analysis"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Limitations",
+            "description": "Evidential gaps and epistemic limitations"
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence",
+            "description": "Overall confidence score (0.0 - 1.0)",
+            "default": 0.0
+          },
+          "confidence_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence Score",
+            "description": "Alias for confidence",
+            "default": 0.0
+          },
+          "confidence_explanation": {
+            "type": "string",
+            "title": "Confidence Explanation",
+            "description": "Explainable deterministic breakdown of confidence derivation",
+            "default": ""
+          },
+          "is_insufficient_evidence": {
+            "type": "boolean",
+            "title": "Is Insufficient Evidence",
+            "default": false
+          },
+          "facts": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Facts"
+          },
+          "inferences": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Inferences"
+          },
+          "unknowns": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Unknowns"
+          },
+          "supporting_evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Supporting Evidence Ids"
+          },
+          "opposing_evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Opposing Evidence Ids"
+          },
+          "evidence_reliability": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ReliabilityBreakdown"
+                },
+                {
+                  "$ref": "#/components/schemas/EvidenceReliabilityResult"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Evidence Reliability"
+          },
+          "conflicts": {
+            "items": {
+              "$ref": "#/components/schemas/ConflictPair"
+            },
+            "type": "array",
+            "title": "Conflicts"
+          },
+          "suspicion_indicators": {
+            "items": {
+              "$ref": "#/components/schemas/SuspicionIndicator"
+            },
+            "type": "array",
+            "title": "Suspicion Indicators"
+          },
+          "citations": {
+            "items": {
+              "$ref": "#/components/schemas/Citation"
+            },
+            "type": "array",
+            "title": "Citations"
+          },
+          "claim_citations": {
+            "items": {
+              "$ref": "#/components/schemas/ClaimCitation"
+            },
+            "type": "array",
+            "title": "Claim Citations",
+            "description": "Citations grouped per claim"
+          },
+          "reasoning_mode": {
+            "type": "string",
+            "title": "Reasoning Mode",
+            "description": "'deterministic' or 'ollama_augmented'",
+            "default": "deterministic"
+          },
+          "audit_trail": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Audit Trail"
+          },
+          "llm_attempted": {
+            "title": "Llm Attempted",
+            "type": "boolean",
+            "default": false,
+            "description": "True if local LLM generation was initiated"
+          },
+          "llm_synthesis_used": {
+            "title": "Llm Synthesis Used",
+            "type": "boolean",
+            "default": false,
+            "description": "True only when LLM output was accepted (augmented or partial) into answer"
+          }
+        },
+        "type": "object",
+        "required": [
+          "question",
+          "answer"
+        ],
+        "title": "ReasoningResponse"
+      },
+      "ReasoningStatus": {
+        "type": "string",
+        "enum": [
+          "ANSWERED",
+          "PARTIALLY_ANSWERED",
+          "CONFLICTED",
+          "INSUFFICIENT_EVIDENCE"
+        ],
+        "title": "ReasoningStatus"
+      },
+      "ReliabilityBreakdown": {
+        "properties": {
+          "traceability_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Traceability Score",
+            "description": "Presence of source IDs, page numbers, authors"
+          },
+          "directness_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Directness Score",
+            "description": "Primary vs secondary vs hearsay weighting"
+          },
+          "corroboration_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Corroboration Score",
+            "description": "Corroboration by other independent items"
+          },
+          "consistency_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Consistency Score",
+            "description": "Internal date, author, and extraction consistency"
+          },
+          "completeness_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Completeness Score",
+            "description": "Sufficiency of contextual fields"
+          },
+          "overall_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Overall Score",
+            "description": "Combined weighted reliability score"
+          },
+          "rating": {
+            "$ref": "#/components/schemas/ReliabilityRating",
+            "description": "Qualitative categorization"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reasons",
+            "description": "Detailed transparent justification for the scores"
+          },
+          "modality_neutrality_flag": {
+            "type": "boolean",
+            "title": "Modality Neutrality Flag",
+            "description": "Confirms that reliability was evaluated based on provenance criteria and not biased by modality alone",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "traceability_score",
+          "directness_score",
+          "corroboration_score",
+          "consistency_score",
+          "completeness_score",
+          "overall_score",
+          "rating"
+        ],
+        "title": "ReliabilityBreakdown"
+      },
+      "ReliabilityLabel": {
+        "type": "string",
+        "enum": [
+          "High",
+          "Moderate",
+          "Low",
+          "Unassessed"
+        ],
+        "title": "ReliabilityLabel"
+      },
+      "ReliabilityRating": {
+        "type": "string",
+        "enum": [
+          "HIGH",
+          "MEDIUM",
+          "LOW",
+          "UNRELIABLE"
+        ],
+        "title": "ReliabilityRating"
+      },
+      "SuspicionIndicator": {
+        "properties": {
+          "indicator_code": {
+            "type": "string",
+            "title": "Indicator Code",
+            "description": "Unique indicator machine-readable code (e.g. SUSP_INCONSISTENT_TIMESTAMP)"
+          },
+          "category": {
+            "$ref": "#/components/schemas/IndicatorCategory",
+            "description": "Indicator category",
+            "default": "provenance"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Concise indicator title"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/SuspicionSeverity",
+            "description": "Assessment severity: LOW, MEDIUM, HIGH"
+          },
+          "explanation": {
+            "type": "string",
+            "title": "Explanation",
+            "description": "Detailed transparent explanation of the anomaly"
+          },
+          "caveat": {
+            "type": "string",
+            "title": "Caveat",
+            "description": "Mandatory ethical boundary caveat",
+            "default": "A suspicious indicator does not prove forgery, falsehood or manipulation."
+          },
+          "affected_evidence_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Affected Evidence Ids"
+          },
+          "affected_claim_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Affected Claim Ids"
+          },
+          "recommended_verification_action": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recommended Verification Action"
+          },
+          "recommended_checks": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Recommended Checks"
+          }
+        },
+        "additionalProperties": true,
+        "type": "object",
+        "required": [
+          "indicator_code",
+          "title",
+          "severity",
+          "explanation"
+        ],
+        "title": "SuspicionIndicator"
+      },
+      "SuspicionSeverity": {
+        "type": "string",
+        "enum": [
+          "LOW",
+          "MEDIUM",
+          "HIGH"
+        ],
+        "title": "SuspicionSeverity"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

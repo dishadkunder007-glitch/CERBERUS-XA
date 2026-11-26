@@ -1,0 +1,248 @@
+{
+  "question": "What is the certified battery capacity of the Zeta-6 UAV?",
+  "status": "ANSWERED",
+  "conclusion_type": "supported",
+  "answer": "The battery capacity of Zeta-6 UAV is 4500 mAh.",
+  "summary": "Ollama-synthesized answer (qwen2.5:7b-instruct) with deterministic verification.",
+  "supporting_claims": [
+    {
+      "id": "CLM-F-01",
+      "statement": "Zeta-6 battery pack capacity is 4500 mAh",
+      "entity": "Zeta-6 UAV",
+      "property": "battery_capacity",
+      "value": 4500,
+      "unit": "mAh",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-F-01"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "opposing_claims": [],
+  "unresolved_conflicts": [],
+  "reasoning_steps": [
+    "Stage 1 (Question Understanding): Identified target entity='Zeta-6 UAV', property='payload_capacity', time_constraint='Unbounded', query_type='QUANTITATIVE'.",
+    "Stage 2 (Evidence Grouping): Grouped 1 evidence item(s) across 1 entities, 1 distinct sources, and 0 temporal snapshots.",
+    "Stage 3 (Supporting Evidence): Identified 1 supporting claim(s) backed by 1 evidence item(s) (EV-F-01).",
+    "Stage 4 (Contradictory Evidence): Identified 0 opposing claim(s) backed by 0 evidence item(s) (None).",
+    "Stage 6 (Evidence Sufficiency): Sufficient relevant evidence identified (1 supporting, 0 opposing).",
+    "Stage 7 (Conclusion): Reached terminal status 'ANSWERED' with calibrated confidence 0.61."
+  ],
+  "assumptions": [],
+  "limitations": [],
+  "confidence": 0.6078,
+  "confidence_score": 0.6078,
+  "confidence_explanation": "Confidence 0.61 computed deterministically: Base reliability (0.71) x single source (0.85) x Query relevance (1.00). No active contradictions. Epistemic assessment, not statistical probability.",
+  "is_insufficient_evidence": false,
+  "facts": [
+    "[Evidence-Supported Claim] Zeta-6 battery pack capacity is 4500 mAh (Supported by reliable evidence from 'SPEC-06'; Citing: EV-F-01)"
+  ],
+  "inferences": [
+    "Factual convergence: Reliable evidence directly substantiates query proposition regarding 'Zeta-6 UAV'."
+  ],
+  "unknowns": [],
+  "supporting_evidence_ids": [
+    "EV-F-01"
+  ],
+  "opposing_evidence_ids": [],
+  "evidence_reliability": {
+    "EV-F-01": {
+      "evidence_id": "EV-F-01",
+      "reliability_score": 71.5,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 55.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('SPEC-06').; Original file/archive reference documented ('zeta6.pdf').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Precise locator (page, section, table, or record) is missing.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "Standalone evidence item; no other sources available in the provided corpus to corroborate.",
+          "missing_information": [
+            "Independent corroborating evidence is not present in the current corpus."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [55.0]: Identifiable source system/repository ('SPEC-06').; Original file/archive reference documented ('zeta6.pdf').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: Standalone evidence item; no other sources available in the provided corpus to corroborate.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'structured' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating evidence is not present in the current corpus.",
+        "Originating author or organization is unspecified.",
+        "Precise locator (page, section, table, or record) is missing."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.55,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.715,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    }
+  },
+  "conflicts": [],
+  "suspicion_indicators": [
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-F-01' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-F-01"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-F-01' asserts entity 'Zeta-6 UAV', but entity name is not found in linked evidence 'EV-F-01'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-F-01"
+      ],
+      "affected_claim_ids": [
+        "CLM-F-01"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "[1]",
+      "evidence_id": "EV-F-01",
+      "source_id": "SPEC-06",
+      "filename": "zeta6.pdf",
+      "location_locator": "Document body",
+      "formatted_citation": "[1] Source: SPEC-06 | File: zeta6.pdf | Type: structured | Format: pdf | Evidence ID: EV-F-01",
+      "verifiable_metadata": {
+        "evidence_id": "EV-F-01",
+        "source_id": "SPEC-06",
+        "filename": "zeta6.pdf",
+        "source_type": "structured",
+        "format": "pdf",
+        "page_number": null,
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "structured",
+      "format": "pdf",
+      "page_number": null,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Zeta-6 battery pack capacity is 4500 mAh.",
+      "claim_id": null,
+      "missing_fields": [
+        "page_number"
+      ]
+    }
+  ],
+  "claim_citations": [
+    {
+      "claim_id": "CLM-F-01",
+      "statement": "Zeta-6 battery pack capacity is 4500 mAh",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-F-01",
+          "source_id": "SPEC-06",
+          "filename": "zeta6.pdf",
+          "source_type": "structured",
+          "format": "pdf",
+          "page_number": null,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Zeta-6 battery pack capacity is 4500 mAh.",
+          "claim_id": "CLM-F-01",
+          "formatted_citation": "Source: SPEC-06 | File: zeta6.pdf | Type: structured | Format: pdf | Evidence ID: EV-F-01",
+          "missing_fields": [
+            "page_number"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-F-01': missing page_number"
+      ],
+      "invalid_evidence_ids": []
+    }
+  ],
+  "reasoning_mode": "ollama_augmented",
+  "llm_attempted": true,
+  "llm_synthesis_used": true,
+  "audit_trail": [
+    "Initiated 7-stage conflict-aware reasoning engine.",
+    "Synthesized natural-language response via local Ollama model 'qwen2.5:7b-instruct' (all sentences accepted)."
+  ]
+}

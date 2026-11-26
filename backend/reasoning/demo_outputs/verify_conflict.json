@@ -1,0 +1,464 @@
+{
+  "question": "What is the certified payload capacity of the Alpha-7 UAV?",
+  "status": "CONFLICTED",
+  "conclusion_type": "conflicting",
+  "answer": "Conflicted evidence: A definitive answer to 'What is the certified payload capacity of the Alpha-7 UAV?' cannot be established due to unresolved contradictions between sources: [CLM-01 vs CLM-02: Numerical discrepancy for property 'payload_capacity': 15.5 kg vs 22.0 kg.].",
+  "summary": "Evaluation halted on unresolved conflict. Contradictory evidence was detected across independent records. Adjudication cannot be forced without secondary ground truth.",
+  "supporting_claims": [
+    {
+      "id": "CLM-01",
+      "statement": "Alpha-7 UAV certified payload capacity is 15.5 kg.",
+      "entity": "Alpha-7 UAV",
+      "property": "payload_capacity",
+      "value": "15.5",
+      "unit": "kg",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-01"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-02",
+      "statement": "Alpha-7 UAV certified payload capacity is 22.0 kg.",
+      "entity": "Alpha-7 UAV",
+      "property": "payload_capacity",
+      "value": "22.0",
+      "unit": "kg",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "opposing_claims": [
+    {
+      "id": "CLM-02",
+      "statement": "Alpha-7 UAV certified payload capacity is 22.0 kg.",
+      "entity": "Alpha-7 UAV",
+      "property": "payload_capacity",
+      "value": "22.0",
+      "unit": "kg",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "claim_a_id": "CLM-01",
+      "claim_b_id": "CLM-02",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'payload_capacity': 15.5 kg vs 22.0 kg.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('kg'): 15.5 vs 22.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.77, Claim B: 0.59, gap: 0.18 < 0.25 or threshold unmet)."
+    }
+  ],
+  "reasoning_steps": [
+    "Stage 1 (Question Understanding): Identified target entity='Alpha-7 UAV', property='payload_capacity', time_constraint='Unbounded', query_type='QUANTITATIVE'.",
+    "Stage 2 (Evidence Grouping): Grouped 2 evidence item(s) across 1 entities, 2 distinct sources, and 0 temporal snapshots.",
+    "Stage 3 (Supporting Evidence): Identified 2 supporting claim(s) backed by 2 evidence item(s) (EV-01, EV-02).",
+    "Stage 4 (Contradictory Evidence): Identified 1 opposing claim(s) backed by 1 evidence item(s) (EV-02).",
+    "Stage 5 (Context Analysis): Unresolved factual deadlock between CLM-01 and CLM-02: Numerical discrepancy for property 'payload_capacity': 15.5 kg vs 22.0 kg.",
+    "Stage 6 (Evidence Sufficiency): Sufficient relevant evidence identified (2 supporting, 1 opposing).",
+    "Stage 7 (Conclusion): Reached terminal status 'CONFLICTED' with calibrated confidence 0.22."
+  ],
+  "assumptions": [],
+  "limitations": [],
+  "confidence": 0.2215,
+  "confidence_score": 0.2215,
+  "confidence_explanation": "Confidence strictly limited to 0.22 due to 1 active unresolved contradiction(s). Base supporting reliability (0.68) penalized by opposing evidence (0.59). Epistemic assessment reflecting evidentiary deadlock, not statistical probability of truth.",
+  "is_insufficient_evidence": false,
+  "facts": [
+    "[Disputed Claim] Alpha-7 UAV certified payload capacity is 15.5 kg. (Disputed by contradictory records; Citing: EV-01)",
+    "[Disputed Claim] Alpha-7 UAV certified payload capacity is 22.0 kg. (Disputed by contradictory records; Citing: EV-02)"
+  ],
+  "inferences": [
+    "Adjudication deadlock: Opposing sources possess non-dispositive or divergent authority."
+  ],
+  "unknowns": [
+    "Definitive primary source adjudication needed to resolve conflicting records."
+  ],
+  "supporting_evidence_ids": [
+    "EV-01",
+    "EV-02"
+  ],
+  "opposing_evidence_ids": [
+    "EV-02"
+  ],
+  "evidence_reliability": {
+    "EV-01": {
+      "evidence_id": "EV-01",
+      "reliability_score": 76.75,
+      "reliability_label": "High",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 70.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('FAA-TCDS').; Original file/archive reference documented ('TCDS_A7_Rev2.pdf').; Precise physical/logical reference provided (Page 4, Section 'Technical Specifications').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 75.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Substantive contextual content length provided.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [70.0]: Identifiable source system/repository ('FAA-TCDS').; Original file/archive reference documented ('TCDS_A7_Rev2.pdf').; Precise physical/logical reference provided (Page 4, Section 'Technical Specifications').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [75.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Substantive contextual content length provided.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Originating author or organization is unspecified."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.7,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.75,
+      "overall_score": 0.7675,
+      "rating": "HIGH",
+      "modality_neutrality_flag": true
+    },
+    "EV-02": {
+      "evidence_id": "EV-02",
+      "reliability_score": 59.0,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 35.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('DRONE-BLOG').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Original filename or archive reference is absent.",
+            "Precise locator (page, section, table, or record) is missing.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 70.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Secondary reporting, synthesis, or derivative analytical report. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [35.0]: Identifiable source system/repository ('DRONE-BLOG').",
+        "Directness [70.0]: Secondary reporting, synthesis, or derivative analytical report. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Original filename or archive reference is absent.",
+        "Originating author or organization is unspecified.",
+        "Precise locator (page, section, table, or record) is missing."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.35,
+      "directness_score": 0.7,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.59,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    }
+  },
+  "conflicts": [
+    {
+      "claim_a_id": "CLM-01",
+      "claim_b_id": "CLM-02",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'payload_capacity': 15.5 kg vs 22.0 kg.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('kg'): 15.5 vs 22.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.77, Claim B: 0.59, gap: 0.18 < 0.25 or threshold unmet)."
+    }
+  ],
+  "suspicion_indicators": [
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-01' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-01"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-02' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-02"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "[1]",
+      "evidence_id": "EV-01",
+      "source_id": "FAA-TCDS",
+      "filename": "TCDS_A7_Rev2.pdf",
+      "location_locator": "Page 4, Section 'Technical Specifications'",
+      "formatted_citation": "[1] Source: FAA-TCDS | File: TCDS_A7_Rev2.pdf | Type: document | Format: pdf | Page 4 | Section 'Technical Specifications' | Evidence ID: EV-01",
+      "verifiable_metadata": {
+        "evidence_id": "EV-01",
+        "source_id": "FAA-TCDS",
+        "filename": "TCDS_A7_Rev2.pdf",
+        "source_type": "document",
+        "format": "pdf",
+        "page_number": "4",
+        "section": "Technical Specifications",
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "document",
+      "format": "pdf",
+      "page_number": 4,
+      "section": "Technical Specifications",
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Official FAA Type Certificate: Alpha-7 UAV certified payload capacity is 15.5 kg.",
+      "claim_id": null,
+      "missing_fields": []
+    },
+    {
+      "citation_id": "[2]",
+      "evidence_id": "EV-02",
+      "source_id": "DRONE-BLOG",
+      "filename": null,
+      "location_locator": "Document body",
+      "formatted_citation": "[2] Source: DRONE-BLOG | Type: document | URL: https://drone-enthusiasts.example.com/alpha7 | Evidence ID: EV-02",
+      "verifiable_metadata": {
+        "evidence_id": "EV-02",
+        "source_id": "DRONE-BLOG",
+        "filename": null,
+        "source_type": "document",
+        "format": null,
+        "page_number": null,
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": "https://drone-enthusiasts.example.com/alpha7",
+        "checksum_hash": null
+      },
+      "source_type": "document",
+      "format": null,
+      "page_number": null,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": "https://drone-enthusiasts.example.com/alpha7",
+      "extracted_text": "Tech forum post: Alpha-7 UAV payload capacity is 22.0 kg.",
+      "claim_id": null,
+      "missing_fields": [
+        "filename",
+        "page_number"
+      ]
+    }
+  ],
+  "claim_citations": [
+    {
+      "claim_id": "CLM-01",
+      "statement": "Alpha-7 UAV certified payload capacity is 15.5 kg.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-01",
+          "source_id": "FAA-TCDS",
+          "filename": "TCDS_A7_Rev2.pdf",
+          "source_type": "document",
+          "format": "pdf",
+          "page_number": 4,
+          "section": "Technical Specifications",
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Official FAA Type Certificate: Alpha-7 UAV certified payload capacity is 15.5 kg.",
+          "claim_id": "CLM-01",
+          "formatted_citation": "Source: FAA-TCDS | File: TCDS_A7_Rev2.pdf | Type: document | Format: pdf | Page 4 | Section 'Technical Specifications' | Evidence ID: EV-01",
+          "missing_fields": []
+        }
+      ],
+      "missing_metadata": [],
+      "invalid_evidence_ids": []
+    },
+    {
+      "claim_id": "CLM-02",
+      "statement": "Alpha-7 UAV certified payload capacity is 22.0 kg.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-02",
+          "source_id": "DRONE-BLOG",
+          "filename": null,
+          "source_type": "document",
+          "format": null,
+          "page_number": null,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": "https://drone-enthusiasts.example.com/alpha7",
+          "extracted_text": "Tech forum post: Alpha-7 UAV payload capacity is 22.0 kg.",
+          "claim_id": "CLM-02",
+          "formatted_citation": "Source: DRONE-BLOG | Type: document | URL: https://drone-enthusiasts.example.com/alpha7 | Evidence ID: EV-02",
+          "missing_fields": [
+            "filename",
+            "page_number"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-02': missing filename",
+        "Item 'EV-02': missing page_number"
+      ],
+      "invalid_evidence_ids": []
+    }
+  ],
+  "reasoning_mode": "deterministic",
+  "llm_attempted": false,
+  "llm_synthesis_used": false,
+  "audit_trail": [
+    "Initiated 7-stage conflict-aware reasoning engine."
+  ]
+}

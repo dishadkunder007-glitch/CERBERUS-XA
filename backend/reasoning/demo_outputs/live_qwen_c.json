@@ -1,0 +1,500 @@
+{
+  "question": "What is the wingspan of the Gamma-9 UAV?",
+  "status": "CONFLICTED",
+  "conclusion_type": "conflicting",
+  "answer": "The evidence conflicts on wingspan of Gamma-9 UAV: 4.2 m vs 6.8 m.",
+  "summary": "Ollama-synthesized answer (qwen2.5:7b-instruct) with deterministic verification.",
+  "supporting_claims": [
+    {
+      "id": "CLM-C-01",
+      "statement": "Gamma-9 wingspan measured at 4.2 m",
+      "entity": "Gamma-9 UAV",
+      "property": "wingspan",
+      "value": 4.2,
+      "unit": "m",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-C-01"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-C-02",
+      "statement": "Gamma-9 wingspan documented at 6.8 m",
+      "entity": "Gamma-9 UAV",
+      "property": "wingspan",
+      "value": 6.8,
+      "unit": "m",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-C-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "opposing_claims": [
+    {
+      "id": "CLM-C-02",
+      "statement": "Gamma-9 wingspan documented at 6.8 m",
+      "entity": "Gamma-9 UAV",
+      "property": "wingspan",
+      "value": 6.8,
+      "unit": "m",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-C-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "claim_a_id": "CLM-C-01",
+      "claim_b_id": "CLM-C-02",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'wingspan': 4.2 m vs 6.8 m.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('m'): 4.2 vs 6.8",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.71, Claim B: 0.71, gap: 0.00 < 0.25 or threshold unmet)."
+    }
+  ],
+  "reasoning_steps": [
+    "Stage 1 (Question Understanding): Identified target entity='Gamma-9 UAV', property='General', time_constraint='Unbounded', query_type='ATTRIBUTE_LOOKUP'.",
+    "Stage 2 (Evidence Grouping): Grouped 2 evidence item(s) across 1 entities, 2 distinct sources, and 0 temporal snapshots.",
+    "Stage 3 (Supporting Evidence): Identified 2 supporting claim(s) backed by 2 evidence item(s) (EV-C-01, EV-C-02).",
+    "Stage 4 (Contradictory Evidence): Identified 1 opposing claim(s) backed by 1 evidence item(s) (EV-C-02).",
+    "Stage 5 (Context Analysis): Unresolved factual deadlock between CLM-C-01 and CLM-C-02: Numerical discrepancy for property 'wingspan': 4.2 m vs 6.8 m.",
+    "Stage 6 (Evidence Sufficiency): Sufficient relevant evidence identified (2 supporting, 1 opposing).",
+    "Stage 7 (Conclusion): Reached terminal status 'CONFLICTED' with calibrated confidence 0.24."
+  ],
+  "assumptions": [],
+  "limitations": [],
+  "confidence": 0.236,
+  "confidence_score": 0.236,
+  "confidence_explanation": "Confidence strictly limited to 0.24 due to 1 active unresolved contradiction(s). Base supporting reliability (0.71) penalized by opposing evidence (0.71). Epistemic assessment reflecting evidentiary deadlock, not statistical probability of truth.",
+  "is_insufficient_evidence": false,
+  "facts": [
+    "[Disputed Claim] Gamma-9 wingspan measured at 4.2 m (Disputed by contradictory records; Citing: EV-C-01)",
+    "[Disputed Claim] Gamma-9 wingspan documented at 6.8 m (Disputed by contradictory records; Citing: EV-C-02)"
+  ],
+  "inferences": [
+    "Adjudication deadlock: Opposing sources possess non-dispositive or divergent authority."
+  ],
+  "unknowns": [
+    "Definitive primary source adjudication needed to resolve conflicting records."
+  ],
+  "supporting_evidence_ids": [
+    "EV-C-01",
+    "EV-C-02"
+  ],
+  "opposing_evidence_ids": [
+    "EV-C-02"
+  ],
+  "evidence_reliability": {
+    "EV-C-01": {
+      "evidence_id": "EV-C-01",
+      "reliability_score": 71.5,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 55.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('DOC-1').; Original file/archive reference documented ('wingspan1.pdf').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Precise locator (page, section, table, or record) is missing.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [55.0]: Identifiable source system/repository ('DOC-1').; Original file/archive reference documented ('wingspan1.pdf').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'structured' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Originating author or organization is unspecified.",
+        "Precise locator (page, section, table, or record) is missing."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.55,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.715,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    },
+    "EV-C-02": {
+      "evidence_id": "EV-C-02",
+      "reliability_score": 71.5,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 55.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('DOC-2').; Original file/archive reference documented ('wingspan2.pdf').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Precise locator (page, section, table, or record) is missing.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [55.0]: Identifiable source system/repository ('DOC-2').; Original file/archive reference documented ('wingspan2.pdf').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'structured' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Originating author or organization is unspecified.",
+        "Precise locator (page, section, table, or record) is missing."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.55,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.715,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    }
+  },
+  "conflicts": [
+    {
+      "claim_a_id": "CLM-C-01",
+      "claim_b_id": "CLM-C-02",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'wingspan': 4.2 m vs 6.8 m.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('m'): 4.2 vs 6.8",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.71, Claim B: 0.71, gap: 0.00 < 0.25 or threshold unmet)."
+    }
+  ],
+  "suspicion_indicators": [
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-C-01' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-C-01"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-C-01' asserts entity 'Gamma-9 UAV', but entity name is not found in linked evidence 'EV-C-01'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-C-01"
+      ],
+      "affected_claim_ids": [
+        "CLM-C-01"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-C-02' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-C-02"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-C-02' asserts entity 'Gamma-9 UAV', but entity name is not found in linked evidence 'EV-C-02'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-C-02"
+      ],
+      "affected_claim_ids": [
+        "CLM-C-02"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "[1]",
+      "evidence_id": "EV-C-01",
+      "source_id": "DOC-1",
+      "filename": "wingspan1.pdf",
+      "location_locator": "Document body",
+      "formatted_citation": "[1] Source: DOC-1 | File: wingspan1.pdf | Type: structured | Format: pdf | Evidence ID: EV-C-01",
+      "verifiable_metadata": {
+        "evidence_id": "EV-C-01",
+        "source_id": "DOC-1",
+        "filename": "wingspan1.pdf",
+        "source_type": "structured",
+        "format": "pdf",
+        "page_number": null,
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "structured",
+      "format": "pdf",
+      "page_number": null,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Gamma-9 wingspan measured at 4.2 m in wind tunnel testing.",
+      "claim_id": null,
+      "missing_fields": [
+        "page_number"
+      ]
+    },
+    {
+      "citation_id": "[2]",
+      "evidence_id": "EV-C-02",
+      "source_id": "DOC-2",
+      "filename": "wingspan2.pdf",
+      "location_locator": "Document body",
+      "formatted_citation": "[2] Source: DOC-2 | File: wingspan2.pdf | Type: structured | Format: pdf | Evidence ID: EV-C-02",
+      "verifiable_metadata": {
+        "evidence_id": "EV-C-02",
+        "source_id": "DOC-2",
+        "filename": "wingspan2.pdf",
+        "source_type": "structured",
+        "format": "pdf",
+        "page_number": null,
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "structured",
+      "format": "pdf",
+      "page_number": null,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Gamma-9 wingspan is documented as 6.8 m in initial concept draft.",
+      "claim_id": null,
+      "missing_fields": [
+        "page_number"
+      ]
+    }
+  ],
+  "claim_citations": [
+    {
+      "claim_id": "CLM-C-01",
+      "statement": "Gamma-9 wingspan measured at 4.2 m",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-C-01",
+          "source_id": "DOC-1",
+          "filename": "wingspan1.pdf",
+          "source_type": "structured",
+          "format": "pdf",
+          "page_number": null,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Gamma-9 wingspan measured at 4.2 m in wind tunnel testing.",
+          "claim_id": "CLM-C-01",
+          "formatted_citation": "Source: DOC-1 | File: wingspan1.pdf | Type: structured | Format: pdf | Evidence ID: EV-C-01",
+          "missing_fields": [
+            "page_number"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-C-01': missing page_number"
+      ],
+      "invalid_evidence_ids": []
+    },
+    {
+      "claim_id": "CLM-C-02",
+      "statement": "Gamma-9 wingspan documented at 6.8 m",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-C-02",
+          "source_id": "DOC-2",
+          "filename": "wingspan2.pdf",
+          "source_type": "structured",
+          "format": "pdf",
+          "page_number": null,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Gamma-9 wingspan is documented as 6.8 m in initial concept draft.",
+          "claim_id": "CLM-C-02",
+          "formatted_citation": "Source: DOC-2 | File: wingspan2.pdf | Type: structured | Format: pdf | Evidence ID: EV-C-02",
+          "missing_fields": [
+            "page_number"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-C-02': missing page_number"
+      ],
+      "invalid_evidence_ids": []
+    }
+  ],
+  "reasoning_mode": "ollama_augmented",
+  "llm_attempted": true,
+  "llm_synthesis_used": true,
+  "audit_trail": [
+    "Initiated 7-stage conflict-aware reasoning engine.",
+    "Synthesized natural-language response via local Ollama model 'qwen2.5:7b-instruct' (all sentences accepted)."
+  ]
+}
