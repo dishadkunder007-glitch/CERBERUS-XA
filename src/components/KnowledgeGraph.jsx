@@ -23,37 +23,96 @@ export const KnowledgeGraph = ({ graphData, onSelectNode }) => {
   const svgRef = useRef(null);
 
   // Fallback if graphData is empty
-  const nodes = graphData?.nodes || [];
-  const links = graphData?.links || [];
+  const rawNodes = graphData?.nodes || [];
+  const rawLinks = graphData?.links || graphData?.edges || [];
 
-  // Computed layout positions for a clean, stable forensic graph representation
+  // Normalize nodes & links to support both Demo and Member 3 backend formats
+  const nodes = React.useMemo(() => {
+    return rawNodes.map((n) => {
+      const nt = String(n.type || n.node_type || 'ENTITY').toUpperCase();
+      let normType = 'ENTITY';
+      if (nt === 'CONFLICT' || nt === 'CONTRADICTION') normType = 'CONFLICT';
+      else if (nt === 'EVIDENCE' || nt === 'SOURCE') normType = 'EVIDENCE';
+      return {
+        ...n,
+        type: normType,
+        label: n.label || n.name || String(n.id || ''),
+      };
+    });
+  }, [rawNodes]);
+
+  const links = React.useMemo(() => {
+    return rawLinks.map((l) => {
+      const rawRel = l.relation || l.edge_type || '';
+      const lt = String(l.type || rawRel).toUpperCase();
+      let normLinkType = 'RELATES';
+      if (lt === 'CONTRADICTS') normLinkType = 'CONTRADICTS';
+      else if (['SUPPORTS', 'CONSISTENT_WITH', 'AGREES_WITH', 'HAS_RAM', 'HAS_STORAGE'].includes(lt) || lt.startsWith('HAS_')) {
+        normLinkType = 'SUPPORTS';
+      }
+      return {
+        ...l,
+        source: typeof l.source === 'object' ? l.source.id : l.source,
+        target: typeof l.target === 'object' ? l.target.id : l.target,
+        type: normLinkType,
+        relation: rawRel,
+      };
+    });
+  }, [rawLinks]);
+
+  // Computed centered, non-overlapping layout positions
   const layoutNodes = React.useMemo(() => {
     const width = 800;
     const height = 480;
     const centerX = width / 2;
     const centerY = height / 2;
 
-    return nodes.map((node, index) => {
-      // Position calculation based on type
+    const entityNodes = nodes.filter(n => n.type === 'ENTITY');
+    const conflictNodes = nodes.filter(n => n.type === 'CONFLICT');
+    const evidenceNodes = nodes.filter(n => n.type === 'EVIDENCE');
+
+    return nodes.map((node) => {
       let x = centerX;
       let y = centerY;
 
       if (node.type === 'ENTITY') {
-        const angle = (index * 2 * Math.PI) / 3;
-        x = centerX + Math.cos(angle) * 110;
-        y = centerY + Math.sin(angle) * 80;
+        const idx = entityNodes.indexOf(node);
+        const total = Math.max(entityNodes.length, 1);
+        if (total === 1) {
+          x = centerX;
+          y = centerY;
+        } else if (idx === 0) {
+          // Primary entity centered
+          x = centerX;
+          y = centerY - 25;
+        } else {
+          // Remaining entities / attributes / consistency evenly spaced on inner ring
+          const ringTotal = total - 1;
+          const ringIdx = idx - 1;
+          const angle = (ringIdx * (2 * Math.PI / ringTotal)) - Math.PI / 2;
+          const rx = ringTotal <= 4 ? 150 : 175;
+          const ry = ringTotal <= 4 ? 105 : 120;
+          x = centerX + Math.cos(angle) * rx;
+          y = centerY + Math.sin(angle) * ry;
+        }
       } else if (node.type === 'CONFLICT') {
-        const conflictIndex = nodes.filter(n => n.type === 'CONFLICT').indexOf(node);
-        const angle = (conflictIndex * (2 * Math.PI / 3)) + Math.PI / 6;
-        x = centerX + Math.cos(angle) * 220;
-        y = centerY + Math.sin(angle) * 160;
+        const idx = conflictNodes.indexOf(node);
+        const total = Math.max(conflictNodes.length, 1);
+        const angle = (idx * (2 * Math.PI / total)) + Math.PI / 6;
+        x = centerX + Math.cos(angle) * 210;
+        y = centerY + Math.sin(angle) * 145;
       } else {
-        // EVIDENCE nodes on outer perimeter
-        const evIndex = nodes.filter(n => n.type === 'EVIDENCE').indexOf(node);
-        const totalEv = Math.max(nodes.filter(n => n.type === 'EVIDENCE').length, 1);
-        const angle = (evIndex * (2 * Math.PI / totalEv)) - Math.PI / 4;
-        x = centerX + Math.cos(angle) * 310;
-        y = centerY + Math.sin(angle) * 190;
+        // EVIDENCE nodes on outer perimeter, well separated
+        const idx = evidenceNodes.indexOf(node);
+        const total = Math.max(evidenceNodes.length, 1);
+        if (total === 2) {
+          x = idx === 0 ? 115 : 685;
+          y = centerY;
+        } else {
+          const angle = (idx * (2 * Math.PI / total)) - Math.PI / 4;
+          x = centerX + Math.cos(angle) * 295;
+          y = centerY + Math.sin(angle) * 175;
+        }
       }
 
       return {
@@ -274,17 +333,27 @@ export const KnowledgeGraph = ({ graphData, onSelectNode }) => {
                     opacity={0.8}
                   />
                   {link.relation && (
-                    <text
-                      x={midX}
-                      y={midY - 4}
-                      fill={isContradiction ? '#fca5a5' : isSupport ? '#86efac' : '#94a3b8'}
-                      fontSize="9"
-                      fontFamily="monospace"
-                      textAnchor="middle"
-                      className="pointer-events-none select-none bg-dark-950"
-                    >
-                      {link.relation}
-                    </text>
+                    <g className="pointer-events-none select-none">
+                      <rect
+                        x={midX - Math.min(link.relation.length * 3.1 + 6, 52)}
+                        y={midY - 12}
+                        width={Math.min(link.relation.length * 6.2 + 12, 104)}
+                        height={14}
+                        rx={4}
+                        fill="#090f1d"
+                        fillOpacity={0.88}
+                      />
+                      <text
+                        x={midX}
+                        y={midY - 2}
+                        fill={isContradiction ? '#fca5a5' : isSupport ? '#86efac' : '#cbd5e1'}
+                        fontSize="9"
+                        fontFamily="monospace"
+                        textAnchor="middle"
+                      >
+                        {link.relation}
+                      </text>
+                    </g>
                   )}
                 </g>
               );
@@ -396,6 +465,40 @@ export const KnowledgeGraph = ({ graphData, onSelectNode }) => {
                 Modality: <span className="text-accent-cyan">{selectedNode.modality}</span>
               </p>
             )}
+
+            {selectedNode.details && (
+              <p className="text-[11px] text-slate-300 mt-1.5 font-sans leading-snug">
+                {selectedNode.details}
+              </p>
+            )}
+
+            {/* Connected Relationships */}
+            {(() => {
+              const connected = links.filter(l => l.source === selectedNode.id || l.target === selectedNode.id);
+              if (connected.length === 0) return null;
+              return (
+                <div className="mt-2.5 pt-2 border-t border-dark-800 space-y-1 max-h-32 overflow-y-auto">
+                  <span className="text-[10px] font-mono uppercase text-slate-400 block">
+                    Relationships ({connected.length})
+                  </span>
+                  {connected.map((l, idx) => {
+                    const isOut = l.source === selectedNode.id;
+                    const otherId = isOut ? l.target : l.source;
+                    const otherLabel = nodeMap[otherId]?.label || otherId;
+                    return (
+                      <div key={idx} className="text-[10px] font-mono text-slate-300 truncate">
+                        {isOut ? '→ ' : '← '}
+                        <span className={l.type === 'CONTRADICTS' ? 'text-rose-400' : 'text-emerald-400'}>
+                          {l.relation || l.type}
+                        </span>
+                        {isOut ? ' → ' : ' ← '}
+                        <span className="text-white">{otherLabel}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })()}
 
             <div className="mt-3 pt-2 border-t border-dark-800 text-[10px] text-slate-500 font-mono">
               Node ID: {selectedNode.id}

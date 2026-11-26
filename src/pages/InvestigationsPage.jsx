@@ -14,7 +14,7 @@ import {
 import { useInvestigation } from '../context/InvestigationContext';
 
 export const InvestigationsPage = () => {
-  const { investigationsList, setActiveTab } = useInvestigation();
+  const { investigationsList, setActiveTab, selectInvestigationReport, isDemoMode } = useInvestigation();
 
   return (
     <div className="space-y-6 pb-12">
@@ -98,9 +98,14 @@ export const InvestigationsPage = () => {
             </div>
 
             <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-cerberus-border text-xs font-mono text-slate-500 dark:text-cerberus-muted">
-              <span>Last updated: {new Date(inv.lastUpdated).toLocaleString()}</span>
+              <span>Last updated: {new Date(inv.lastUpdated || inv.timestamp).toLocaleString()}</span>
               <button
-                onClick={() => setActiveTab('report')}
+                onClick={() => {
+                  if (!isDemoMode && inv.dossier && selectInvestigationReport) {
+                    selectInvestigationReport(inv.dossier);
+                  }
+                  setActiveTab('report');
+                }}
                 className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-cerberus-card dark:hover:bg-cerberus-border text-blue-600 dark:text-cerberus-cyan font-bold flex items-center gap-1.5 transition-colors"
               >
                 Inspect Dossier <ArrowRight className="w-3.5 h-3.5" />

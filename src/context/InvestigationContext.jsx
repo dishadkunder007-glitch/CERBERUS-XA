@@ -4,6 +4,9 @@ import {
   processBatch,
   processFile,
   getExtractedClaims,
+  getEvidenceFiles,
+  deleteEvidenceFile,
+  resetBackendSession,
 } from '../services/evidenceService';
 import {
   getConflictAnalysis
@@ -17,7 +20,8 @@ import {
   getEntityResolutions,
   getReliabilityAnalysis,
   getAdversarialAnalysis,
-  getAuditLogs
+  getAuditLogs,
+  getInvestigationsHistory
 } from '../services/investigationService';
 import {
   DEMO_CASE_INFO,
@@ -215,6 +219,7 @@ export const InvestigationProvider = ({ children }) => {
   const [liveResolutions, setLiveResolutions] = useState([]);
   const [liveReliability, setLiveReliability] = useState([]);
   const [liveAdversarial, setLiveAdversarial] = useState([]);
+  const [liveInvestigations, setLiveInvestigations] = useState([]);
   const [liveAuditLogs, setLiveAuditLogs] = useState([]);
 
   // Processing & Error states
@@ -236,14 +241,15 @@ export const InvestigationProvider = ({ children }) => {
   const verifyBackend = useCallback(async () => {
     try {
       const health = await checkBackendHealth();
+      const isOnline = Boolean(health.online);
       setBackendStatus({
         checked: true,
-        online: health.online,
+        online: isOnline,
         apiUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000',
         details: health.data || null,
         error: health.error || null,
       });
-      return health.online;
+      return isOnline;
     } catch (err) {
       setBackendStatus({
         checked: true,
@@ -256,9 +262,82 @@ export const InvestigationProvider = ({ children }) => {
     }
   }, []);
 
+  // Fetch live state from backend
+  const refreshLiveData = useCallback(async () => {
+    try {
+      const [evidence, claims, conflicts, graph, resolutions, reliability, adversarial, audit, investigations] = await Promise.allSettled([
+        getEvidenceFiles(),
+        getExtractedClaims(),
+        getConflictAnalysis(),
+        getKnowledgeGraphData(),
+        getEntityResolutions(),
+        getReliabilityAnalysis(),
+        getAdversarialAnalysis(),
+        getAuditLogs(),
+        getInvestigationsHistory()
+      ]);
+
+      if (evidence.status === 'fulfilled' && Array.isArray(evidence.value)) {
+        setLiveFiles(evidence.value);
+      }
+      if (claims.status === 'fulfilled' && Array.isArray(claims.value)) {
+        setLiveClaims(claims.value);
+      }
+      if (conflicts.status === 'fulfilled' && Array.isArray(conflicts.value)) {
+        setLiveConflicts(conflicts.value);
+      }
+      if (graph.status === 'fulfilled' && graph.value?.nodes) {
+        setLiveGraph(graph.value);
+      }
+      if (resolutions.status === 'fulfilled' && Array.isArray(resolutions.value) && resolutions.value.length > 0) {
+        setLiveResolutions(resolutions.value);
+        // Populate live entities from actual entity-resolution results
+        const entityMap = new Map();
+        resolutions.value.forEach((r) => {
+          const canon = r.canonicalName || r.alias || 'Unknown Entity';
+          if (!entityMap.has(canon)) {
+            entityMap.set(canon, {
+              id: r.id,
+              name: canon,
+              type: 'ORGANIZATION',
+              aliases: r.alias && r.alias !== canon ? [r.alias] : [],
+              sources: r.sources || [],
+              confidence: r.confidence || 1.0,
+              status: r.status || 'CANONICAL',
+            });
+          } else if (r.alias && r.alias !== canon) {
+            const existing = entityMap.get(canon);
+            if (!existing.aliases.includes(r.alias)) {
+              existing.aliases.push(r.alias);
+            }
+          }
+        });
+        setLiveEntities(Array.from(entityMap.values()));
+      }
+      if (reliability.status === 'fulfilled' && Array.isArray(reliability.value) && reliability.value.length > 0) {
+        setLiveReliability(reliability.value);
+      }
+      if (adversarial.status === 'fulfilled' && Array.isArray(adversarial.value) && adversarial.value.length > 0) {
+        setLiveAdversarial(adversarial.value);
+      }
+      if (audit.status === 'fulfilled' && Array.isArray(audit.value) && audit.value.length > 0) {
+        setLiveAuditLogs(audit.value);
+      }
+      if (investigations.status === 'fulfilled' && Array.isArray(investigations.value) && investigations.value.length > 0) {
+        setLiveInvestigations(investigations.value);
+      }
+    } catch (err) {
+      console.warn('Live data sync notice:', err);
+    }
+  }, []);
+
   useEffect(() => {
-    verifyBackend();
-  }, [verifyBackend]);
+    verifyBackend().then(online => {
+      if (online) {
+        refreshLiveData();
+      }
+    });
+  }, [verifyBackend, refreshLiveData]);
 
   // Upload and process files via FastAPI
   const handleUploadFiles = async (files) => {
@@ -330,6 +409,12 @@ export const InvestigationProvider = ({ children }) => {
         } catch { /* contract */ }
       }
 
+      // Automatically switch to Live Mode so newly uploaded files are immediately visible
+      setIsDemoMode(false);
+
+      // Refresh all live backend data (including GET /evidence)
+      await refreshLiveData();
+
       setProcessingState({
         isUploading: false,
         isProcessing: false,
@@ -363,15 +448,48 @@ export const InvestigationProvider = ({ children }) => {
     }));
 
     try {
+      // Automatically switch to Live Mode so the user sees the real backend verdict
+      setIsDemoMode(false);
       const response = await submitInvestigationQuery({ question: q });
       setLiveReport(response);
+
+      // Append completed live investigation to session history without deleting previous entries
+      if (response && (response.reportId || response.verdict || response.finalVerdict)) {
+        const rawVerdict = response.verdict || response.finalVerdict || 'INSUFFICIENT_EVIDENCE';
+        const statusStr = rawVerdict === 'ANSWERED' || rawVerdict === 'Supported by evidence'
+          ? 'SUPPORTED'
+          : (rawVerdict === 'CONFLICTED' || rawVerdict === 'Conflicting evidence'
+            ? 'CONFLICT_DETECTED'
+            : 'INSUFFICIENT_EVIDENCE');
+
+        const newEntry = {
+          id: response.reportId || `DOSSIER-${Date.now()}`,
+          title: response.investigationQuestion || response.question || q,
+          category: 'Live Cross-Modal Inquiry',
+          status: statusStr,
+          leadEntity: liveEntities[0]?.name || 'Uploaded Corpus',
+          evidenceCount: liveFiles.length,
+          claimsCount: liveClaims.length,
+          verdict: response.finalVerdict || rawVerdict,
+          confidence: response.verdictConfidence ?? 0,
+          timestamp: response.timestamp || new Date().toISOString(),
+          lastUpdated: response.timestamp || new Date().toISOString(),
+          dossier: response
+        };
+
+        setLiveInvestigations(prev => {
+          const filtered = prev.filter(item => item.id !== newEntry.id);
+          return [newEntry, ...filtered];
+        });
+      }
+
       setProcessingState(prev => ({
         ...prev,
         isProcessing: false,
         statusText: 'Analysis complete',
         successMessage: 'Investigation reasoning report synthesized.'
       }));
-      setActiveTab('report');
+      setActiveTab('ai-investigation', 'answer-studio');
     } catch (err) {
       console.error('Investigation error:', err);
       setProcessingState(prev => ({
@@ -383,8 +501,40 @@ export const InvestigationProvider = ({ children }) => {
     }
   };
 
+  // Select a specific investigation dossier from history
+  const selectInvestigationReport = useCallback((dossier) => {
+    if (dossier) {
+      setLiveReport(dossier);
+    }
+  }, []);
+
+  // Delete a specific evidence file from the vault
+  const handleDeleteEvidence = async (evidenceId) => {
+    if (!isDemoMode && backendStatus.online) {
+      try {
+        await deleteEvidenceFile(evidenceId);
+        await refreshLiveData();
+      } catch (err) {
+        console.error('Delete evidence error:', err);
+        setProcessingState(prev => ({
+          ...prev,
+          error: err.message || 'Failed to delete evidence file.'
+        }));
+      }
+    } else {
+      setLiveFiles(prev => prev.filter(f => f.id !== evidenceId));
+    }
+  };
+
   // Clear live session data
-  const handleClearSession = () => {
+  const handleClearSession = async () => {
+    if (backendStatus.online) {
+      try {
+        await resetBackendSession();
+      } catch (err) {
+        console.warn('Backend reset warning:', err);
+      }
+    }
     setLiveFiles([]);
     setLiveClaims([]);
     setLiveConflicts([]);
@@ -394,6 +544,7 @@ export const InvestigationProvider = ({ children }) => {
     setLiveResolutions([]);
     setLiveReliability([]);
     setLiveAdversarial([]);
+    setLiveInvestigations([]);
     setLiveAuditLogs([]);
     setProcessingState({
       isUploading: false,
@@ -414,7 +565,7 @@ export const InvestigationProvider = ({ children }) => {
   const entityResolutions = isDemoMode ? DEMO_ENTITY_RESOLUTIONS : liveResolutions;
   const reliabilityRecords = isDemoMode ? DEMO_RELIABILITY_RECORDS : liveReliability;
   const adversarialAlerts = isDemoMode ? DEMO_ADVERSARIAL_ALERTS : liveAdversarial;
-  const investigationsList = isDemoMode ? DEMO_INVESTIGATIONS_LIST : [];
+  const investigationsList = isDemoMode ? DEMO_INVESTIGATIONS_LIST : liveInvestigations;
   const auditLogs = isDemoMode ? DEMO_AUDIT_LOGS : liveAuditLogs;
   const evaluationMetrics = isDemoMode ? DEMO_EVALUATION_METRICS : null;
 
@@ -465,7 +616,10 @@ export const InvestigationProvider = ({ children }) => {
         setInvestigationQuery,
         handleUploadFiles,
         handleRunInvestigation,
+        handleDeleteEvidence,
         handleClearSession,
+        selectInvestigationReport,
+        refreshLiveData,
         liveFilesCount: liveFiles.length
       }}
     >

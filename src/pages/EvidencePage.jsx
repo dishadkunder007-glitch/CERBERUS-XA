@@ -12,7 +12,8 @@ import {
   Table as TableIcon,
   Image as ImageIcon,
   CheckCircle2,
-  X
+  X,
+  Trash2
 } from 'lucide-react';
 import { useInvestigation } from '../context/InvestigationContext';
 import { formatBytes } from '../utils/formatters';
@@ -23,7 +24,10 @@ export const EvidencePage = () => {
     evidenceFiles,
     extractedClaims,
     conflicts,
-    setActiveTab
+    setActiveTab,
+    isDemoMode,
+    handleDeleteEvidence,
+    handleClearSession
   } = useInvestigation();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -82,13 +86,26 @@ export const EvidencePage = () => {
           </p>
         </div>
 
-        <button
-          onClick={() => setActiveTab('upload')}
-          className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-cerberus-blue dark:hover:bg-blue-600 text-white text-xs font-mono font-bold shadow-glow-blue transition-all flex items-center gap-2"
-        >
-          <UploadCloud className="w-4 h-4" />
-          <span>Ingest Source</span>
-        </button>
+        <div className="flex items-center gap-2.5">
+          {!isDemoMode && evidenceFiles.length > 0 && (
+            <button
+              onClick={handleClearSession}
+              className="px-3.5 py-2.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-cerberus-red border border-rose-500/30 text-xs font-mono font-bold transition-all flex items-center gap-1.5"
+              title="Clear all uploaded files from active vault"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              <span>Clear Vault</span>
+            </button>
+          )}
+
+          <button
+            onClick={() => setActiveTab('upload')}
+            className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 dark:bg-cerberus-blue dark:hover:bg-blue-600 text-white text-xs font-mono font-bold shadow-glow-blue transition-all flex items-center gap-2"
+          >
+            <UploadCloud className="w-4 h-4" />
+            <span>Ingest Source</span>
+          </button>
+        </div>
       </div>
 
       {/* Toolbar: Search, Modality Filter, Status Filter, Sorting */}
@@ -224,16 +241,30 @@ export const EvidencePage = () => {
                     </td>
 
                     <td className="py-3 px-3 text-right">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedEvidence(file);
-                        }}
-                        className="p-1.5 rounded text-cerberus-muted hover:text-cerberus-cyan hover:bg-cerberus-card transition-colors"
-                        title="View Provenance Dossier"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </button>
+                      <div className="flex items-center justify-end gap-1">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedEvidence(file);
+                          }}
+                          className="p-1.5 rounded text-cerberus-muted hover:text-cerberus-cyan hover:bg-cerberus-card transition-colors"
+                          title="View Provenance Dossier"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </button>
+                        {!isDemoMode && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDeleteEvidence(file.id);
+                            }}
+                            className="p-1.5 rounded text-cerberus-muted hover:text-rose-500 dark:hover:text-cerberus-red hover:bg-rose-500/10 transition-colors"
+                            title="Delete File from Vault"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}

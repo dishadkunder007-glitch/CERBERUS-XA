@@ -76,6 +76,24 @@ export const getExtractedClaims = async (params = {}) => {
   return response.data;
 };
 
+// 4b. Retrieve Evidence Vault Files (GET /evidence)
+export const getEvidenceFiles = async () => {
+  const response = await apiClient.get('/evidence');
+  return response.data;
+};
+
+// 4c. Delete Single Evidence File (DELETE /evidence/{id})
+export const deleteEvidenceFile = async (evidenceId) => {
+  const response = await apiClient.delete(`/evidence/${encodeURIComponent(evidenceId)}`);
+  return response.data;
+};
+
+// 4d. Reset Backend Session (POST /reset)
+export const resetBackendSession = async () => {
+  const response = await apiClient.post('/reset');
+  return response.data;
+};
+
 // 5. Retrieve Conflict Analysis & Contradiction Detection (Contract with Member 3)
 export const getConflictAnalysis = async (params = {}) => {
   const response = await apiClient.get('/conflicts', { params });

@@ -1,0 +1,498 @@
+{
+  "question": "What is the maximum operating ceiling of the Alpha-7 UAV?",
+  "status": "CONFLICTED",
+  "conclusion_type": "conflicting",
+  "answer": "Conflicted evidence: A definitive answer to 'What is the maximum operating ceiling of the Alpha-7 UAV?' cannot be established due to unresolved contradictions between sources: [CLM-B-01 vs CLM-B-02: Numerical discrepancy for property 'operating_ceiling': 15000 ft vs 22000 ft.].",
+  "summary": "Evaluation halted on unresolved conflict. Contradictory evidence was detected across independent records. Adjudication cannot be forced without secondary ground truth.",
+  "supporting_claims": [
+    {
+      "id": "CLM-B-01",
+      "statement": "Alpha-7 UAV operating ceiling is 15000 ft.",
+      "entity": "Alpha-7 UAV",
+      "property": "operating_ceiling",
+      "value": 15000,
+      "unit": "ft",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-B-01"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-B-02",
+      "statement": "Alpha-7 UAV operating ceiling is 22000 ft.",
+      "entity": "Alpha-7 UAV",
+      "property": "operating_ceiling",
+      "value": 22000,
+      "unit": "ft",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-B-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "opposing_claims": [
+    {
+      "id": "CLM-B-02",
+      "statement": "Alpha-7 UAV operating ceiling is 22000 ft.",
+      "entity": "Alpha-7 UAV",
+      "property": "operating_ceiling",
+      "value": 22000,
+      "unit": "ft",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-B-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "claim_a_id": "CLM-B-01",
+      "claim_b_id": "CLM-B-02",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'operating_ceiling': 15000 ft vs 22000 ft.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('ft'): 15000.0 vs 22000.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.70, Claim B: 0.70, gap: 0.00 < 0.25 or threshold unmet)."
+    }
+  ],
+  "reasoning_steps": [
+    "Stage 1 (Question Understanding): Identified target entity='Alpha-7 UAV', property='General', time_constraint='Unbounded', query_type='ATTRIBUTE_LOOKUP'.",
+    "Stage 2 (Evidence Grouping): Grouped 2 evidence item(s) across 1 entities, 2 distinct sources, and 0 temporal snapshots.",
+    "Stage 3 (Supporting Evidence): Identified 2 supporting claim(s) backed by 2 evidence item(s) (EV-B-01, EV-B-02).",
+    "Stage 4 (Contradictory Evidence): Identified 1 opposing claim(s) backed by 1 evidence item(s) (EV-B-02).",
+    "Stage 5 (Context Analysis): Unresolved factual deadlock between CLM-B-01 and CLM-B-02: Numerical discrepancy for property 'operating_ceiling': 15000 ft vs 22000 ft.",
+    "Stage 6 (Evidence Sufficiency): Sufficient relevant evidence identified (2 supporting, 1 opposing).",
+    "Stage 7 (Conclusion): Reached terminal status 'CONFLICTED' with calibrated confidence 0.23."
+  ],
+  "assumptions": [],
+  "limitations": [],
+  "confidence": 0.231,
+  "confidence_score": 0.231,
+  "confidence_explanation": "Confidence strictly limited to 0.23 due to 1 active unresolved contradiction(s). Base supporting reliability (0.70) penalized by opposing evidence (0.70). Epistemic assessment reflecting evidentiary deadlock, not statistical probability of truth.",
+  "is_insufficient_evidence": false,
+  "facts": [
+    "[Disputed Claim] Alpha-7 UAV operating ceiling is 15000 ft. (Disputed by contradictory records; Citing: EV-B-01)",
+    "[Disputed Claim] Alpha-7 UAV operating ceiling is 22000 ft. (Disputed by contradictory records; Citing: EV-B-02)"
+  ],
+  "inferences": [
+    "Adjudication deadlock: Opposing sources possess non-dispositive or divergent authority."
+  ],
+  "unknowns": [
+    "Definitive primary source adjudication needed to resolve conflicting records."
+  ],
+  "supporting_evidence_ids": [
+    "EV-B-01",
+    "EV-B-02"
+  ],
+  "opposing_evidence_ids": [
+    "EV-B-02"
+  ],
+  "evidence_reliability": {
+    "EV-B-01": {
+      "evidence_id": "EV-B-01",
+      "reliability_score": 70.25,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 50.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('FAA-TCDS').; Precise physical/logical reference provided (Page 5).",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Original filename or archive reference is absent.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [50.0]: Identifiable source system/repository ('FAA-TCDS').; Precise physical/logical reference provided (Page 5).",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Original filename or archive reference is absent.",
+        "Originating author or organization is unspecified."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.5,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.7025,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    },
+    "EV-B-02": {
+      "evidence_id": "EV-B-02",
+      "reliability_score": 70.25,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 50.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('DOD-EVAL').; Precise physical/logical reference provided (Page 12).",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Original filename or archive reference is absent.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [50.0]: Identifiable source system/repository ('DOD-EVAL').; Precise physical/logical reference provided (Page 12).",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [65.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Moderate content excerpt length; partial surrounding context.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Original filename or archive reference is absent.",
+        "Originating author or organization is unspecified."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.5,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.65,
+      "overall_score": 0.7025,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    }
+  },
+  "conflicts": [
+    {
+      "claim_a_id": "CLM-B-01",
+      "claim_b_id": "CLM-B-02",
+      "conflict_type": "unresolved_conflict",
+      "description": "Numerical discrepancy for property 'operating_ceiling': 15000 ft vs 22000 ft.",
+      "conflicting_attributes": [
+        "value",
+        "unit"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": "Units identical ('ft'): 15000.0 vs 22000.0",
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.70, Claim B: 0.70, gap: 0.00 < 0.25 or threshold unmet)."
+    }
+  ],
+  "suspicion_indicators": [
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-B-01' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-B-01"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-B-01' asserts entity 'Alpha-7 UAV', but entity name is not found in linked evidence 'EV-B-01'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-B-01"
+      ],
+      "affected_claim_ids": [
+        "CLM-B-01"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-B-02' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-B-02"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-B-02' asserts entity 'Alpha-7 UAV', but entity name is not found in linked evidence 'EV-B-02'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-B-02"
+      ],
+      "affected_claim_ids": [
+        "CLM-B-02"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "[1]",
+      "evidence_id": "EV-B-01",
+      "source_id": "FAA-TCDS",
+      "filename": null,
+      "location_locator": "Page 5",
+      "formatted_citation": "[1] Source: FAA-TCDS | Type: document | Page 5 | Evidence ID: EV-B-01",
+      "verifiable_metadata": {
+        "evidence_id": "EV-B-01",
+        "source_id": "FAA-TCDS",
+        "filename": null,
+        "source_type": "document",
+        "format": null,
+        "page_number": "5",
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "document",
+      "format": null,
+      "page_number": 5,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "FAA TCDS indicates ceiling of 15000 ft.",
+      "claim_id": null,
+      "missing_fields": [
+        "filename"
+      ]
+    },
+    {
+      "citation_id": "[2]",
+      "evidence_id": "EV-B-02",
+      "source_id": "DOD-EVAL",
+      "filename": null,
+      "location_locator": "Page 12",
+      "formatted_citation": "[2] Source: DOD-EVAL | Type: document | Page 12 | Evidence ID: EV-B-02",
+      "verifiable_metadata": {
+        "evidence_id": "EV-B-02",
+        "source_id": "DOD-EVAL",
+        "filename": null,
+        "source_type": "document",
+        "format": null,
+        "page_number": "12",
+        "section": null,
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "document",
+      "format": null,
+      "page_number": 12,
+      "section": null,
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Defense flight report claims ceiling of 22000 ft.",
+      "claim_id": null,
+      "missing_fields": [
+        "filename"
+      ]
+    }
+  ],
+  "claim_citations": [
+    {
+      "claim_id": "CLM-B-01",
+      "statement": "Alpha-7 UAV operating ceiling is 15000 ft.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-B-01",
+          "source_id": "FAA-TCDS",
+          "filename": null,
+          "source_type": "document",
+          "format": null,
+          "page_number": 5,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "FAA TCDS indicates ceiling of 15000 ft.",
+          "claim_id": "CLM-B-01",
+          "formatted_citation": "Source: FAA-TCDS | Type: document | Page 5 | Evidence ID: EV-B-01",
+          "missing_fields": [
+            "filename"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-B-01': missing filename"
+      ],
+      "invalid_evidence_ids": []
+    },
+    {
+      "claim_id": "CLM-B-02",
+      "statement": "Alpha-7 UAV operating ceiling is 22000 ft.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-B-02",
+          "source_id": "DOD-EVAL",
+          "filename": null,
+          "source_type": "document",
+          "format": null,
+          "page_number": 12,
+          "section": null,
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Defense flight report claims ceiling of 22000 ft.",
+          "claim_id": "CLM-B-02",
+          "formatted_citation": "Source: DOD-EVAL | Type: document | Page 12 | Evidence ID: EV-B-02",
+          "missing_fields": [
+            "filename"
+          ]
+        }
+      ],
+      "missing_metadata": [
+        "Item 'EV-B-02': missing filename"
+      ],
+      "invalid_evidence_ids": []
+    }
+  ],
+  "reasoning_mode": "deterministic",
+  "audit_trail": [
+    "Initiated 7-stage conflict-aware reasoning engine.",
+    "Ollama output rejected by grounding validator: sentence 'Based on the verified facts, there is a conflict regarding the maximum operating ceiling of the Alpha-7 UAV.' novel tokens ['conflict', 'regarding'] failed grounding coverage check (0.00 < 0.50) with verified facts; fell back to deterministic reasoning."
+  ]
+}

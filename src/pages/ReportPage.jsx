@@ -133,6 +133,14 @@ export const ReportPage = () => {
         />
       )}
 
+      {/* Error state if inquiry fails */}
+      {!processingState.isProcessing && processingState.error && (
+        <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-xs font-mono text-rose-600 dark:text-cerberus-red flex items-center gap-2.5">
+          <AlertCircle className="w-4 h-4 shrink-0" />
+          <span>{processingState.error}</span>
+        </div>
+      )}
+
       {/* Complete Report Viewer Component */}
       {!processingState.isProcessing && (
         <ReportViewer

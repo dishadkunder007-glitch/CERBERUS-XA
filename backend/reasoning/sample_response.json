@@ -1,0 +1,627 @@
+{
+  "question": "What was the verified payload capacity and completion status for Project Cerberus?",
+  "status": "CONFLICTED",
+  "conclusion_type": "conflicting",
+  "answer": "Conflicted evidence: A definitive answer to 'What was the verified payload capacity and completion status for Project Cerberus?' cannot be established due to unresolved contradictions between sources: [CLM-02 vs CLM-03: Direct polarity contradiction on same subject: Claim CLM-02 asserts positive whereas Claim CLM-03 asserts negative.].",
+  "summary": "Evaluation halted on unresolved conflict. Contradictory evidence was detected across independent records. Adjudication cannot be forced without secondary ground truth.",
+  "supporting_claims": [
+    {
+      "id": "CLM-01",
+      "statement": "Project Cerberus drone payload capacity is certified at 15.5 kg.",
+      "entity": "Project Cerberus",
+      "property": "payload_capacity",
+      "value": "15.5",
+      "unit": "kg",
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-01"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    },
+    {
+      "id": "CLM-02",
+      "statement": "Project Cerberus testing was successfully completed on schedule.",
+      "entity": "Project Cerberus",
+      "property": "status",
+      "value": "completed",
+      "unit": null,
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-02"
+      ],
+      "confidence": 1.0,
+      "polarity": true
+    }
+  ],
+  "opposing_claims": [
+    {
+      "id": "CLM-03",
+      "statement": "Project Cerberus testing failed battery endurance benchmark.",
+      "entity": "Project Cerberus",
+      "property": "status",
+      "value": "failed",
+      "unit": null,
+      "timestamp": null,
+      "time_period": null,
+      "scope": null,
+      "evidence_ids": [
+        "EV-03"
+      ],
+      "confidence": 1.0,
+      "polarity": false
+    }
+  ],
+  "unresolved_conflicts": [
+    {
+      "claim_a_id": "CLM-02",
+      "claim_b_id": "CLM-03",
+      "conflict_type": "unresolved_conflict",
+      "description": "Direct polarity contradiction on same subject: Claim CLM-02 asserts positive whereas Claim CLM-03 asserts negative.",
+      "conflicting_attributes": [
+        "polarity",
+        "statement"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": null,
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.73, Claim B: 0.60)."
+    }
+  ],
+  "reasoning_steps": [
+    "Stage 1 (Question Understanding): Identified target entity='Project Cerberus', property='payload_capacity', time_constraint='Unbounded', query_type='QUANTITATIVE'.",
+    "Stage 2 (Evidence Grouping): Grouped 3 evidence item(s) across 2 entities, 3 distinct sources, and 0 temporal snapshots.",
+    "Stage 3 (Supporting Evidence): Identified 2 supporting claim(s) backed by 2 evidence item(s) (EV-02, EV-01).",
+    "Stage 4 (Contradictory Evidence): Identified 1 opposing claim(s) backed by 1 evidence item(s) (EV-03).",
+    "Stage 5 (Context Analysis): Unresolved factual deadlock between CLM-02 and CLM-03: Direct polarity contradiction on same subject: Claim CLM-02 asserts positive whereas Claim CLM-03 asserts negative.",
+    "Stage 6 (Evidence Sufficiency): Sufficient relevant evidence identified (2 supporting, 1 opposing).",
+    "Stage 7 (Conclusion): Reached terminal status 'CONFLICTED' with calibrated confidence 0.26."
+  ],
+  "assumptions": [],
+  "limitations": [],
+  "confidence": 0.264,
+  "confidence_score": 0.264,
+  "confidence_explanation": "Confidence strictly limited to 0.26 due to 1 active unresolved contradiction(s). Base supporting reliability (0.79) penalized by opposing evidence (0.60). Epistemic assessment reflecting evidentiary deadlock, not statistical probability of truth.",
+  "is_insufficient_evidence": false,
+  "facts": [
+    "[Evidence-Supported Claim] Project Cerberus drone payload capacity is certified at 15.5 kg. (Supported by reliable evidence from 'FAA-CERT-2024'; Citing: EV-01)",
+    "[Disputed Claim] Project Cerberus testing was successfully completed on schedule. (Disputed by contradictory records; Citing: EV-02)",
+    "[Disputed Claim] Project Cerberus testing failed battery endurance benchmark. (Disputed by contradictory records; Citing: EV-03)",
+    "[KG Relationship] (Project Cerberus) -[has_certification]-> (FAA-CERT-2024) [Confidence: 1.00]"
+  ],
+  "inferences": [
+    "Adjudication deadlock: Opposing sources possess non-dispositive or divergent authority."
+  ],
+  "unknowns": [
+    "Definitive primary source adjudication needed to resolve conflicting records."
+  ],
+  "supporting_evidence_ids": [
+    "EV-01",
+    "EV-02"
+  ],
+  "opposing_evidence_ids": [
+    "EV-03"
+  ],
+  "evidence_reliability": {
+    "EV-01": {
+      "evidence_id": "EV-01",
+      "reliability_score": 84.25,
+      "reliability_label": "High",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('FAA-CERT-2024').; Originating party identified: Federal Aviation Authority.; Original file/archive reference documented ('cerberus_certification.pdf').; Precise physical/logical reference provided (Page 4, Section 'Payload Specifications').; Cryptographic hash or signature present for integrity tracking.",
+          "missing_information": []
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 75.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Substantive contextual content length provided.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [100.0]: Identifiable source system/repository ('FAA-CERT-2024').; Originating party identified: Federal Aviation Authority.; Original file/archive reference documented ('cerberus_certification.pdf').; Precise physical/logical reference provided (Page 4, Section 'Payload Specifications').; Cryptographic hash or signature present for integrity tracking.",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [75.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Substantive contextual content length provided.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 1.0,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.75,
+      "overall_score": 0.8425,
+      "rating": "HIGH",
+      "modality_neutrality_flag": true
+    },
+    "EV-02": {
+      "evidence_id": "EV-02",
+      "reliability_score": 72.75,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 90.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('ENG-LOG-2024').; Originating party identified: Chief Test Pilot.; Original file/archive reference documented ('flight_testing_summary.pdf').; Precise physical/logical reference provided (Page 12, Section 'Testing Results').",
+          "missing_information": [
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).; Direct contradictory assertion found: Claim CLM-02 (polarity=True) vs Claim CLM-03 (polarity=False).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 50.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Substantive contextual content length provided.",
+          "missing_information": [
+            "Date or temporal context anchor is missing.",
+            "Specific measurement units or quantitative details are absent."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [90.0]: Identifiable source system/repository ('ENG-LOG-2024').; Originating party identified: Chief Test Pilot.; Original file/archive reference documented ('flight_testing_summary.pdf').; Precise physical/logical reference provided (Page 12, Section 'Testing Results').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [65.0]: High extraction confidence (1.00).; Direct contradictory assertion found: Claim CLM-02 (polarity=True) vs Claim CLM-03 (polarity=False).",
+        "Completeness [50.0]: Identified subject/entity context present.; Substantive contextual content length provided.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Specific measurement units or quantitative details are absent."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.9,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 0.65,
+      "completeness_score": 0.5,
+      "overall_score": 0.7275,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    },
+    "EV-03": {
+      "evidence_id": "EV-03",
+      "reliability_score": 60.25,
+      "reliability_label": "Moderate",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 70.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('QA-MEMO-DRAFT').; Original file/archive reference documented ('qa_memo_prelim.pdf').; Precise physical/logical reference provided (Page 2, Section 'Cold Weather Testing').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 70.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Secondary reporting, synthesis, or derivative analytical report. Directly cited by 1 claim(s).",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "No independent corroborating sources identified in the provided evidence set.",
+          "missing_information": [
+            "Independent corroborating source confirmation is absent."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 65.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).; Direct contradictory assertion found: Claim CLM-03 (polarity=False) vs Claim CLM-02 (polarity=True).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 50.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Substantive contextual content length provided.",
+          "missing_information": [
+            "Date or temporal context anchor is missing.",
+            "Specific measurement units or quantitative details are absent."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [70.0]: Identifiable source system/repository ('QA-MEMO-DRAFT').; Original file/archive reference documented ('qa_memo_prelim.pdf').; Precise physical/logical reference provided (Page 2, Section 'Cold Weather Testing').",
+        "Directness [70.0]: Secondary reporting, synthesis, or derivative analytical report. Directly cited by 1 claim(s).",
+        "Corroboration [40.0]: No independent corroborating sources identified in the provided evidence set.",
+        "Consistency [65.0]: High extraction confidence (1.00).; Direct contradictory assertion found: Claim CLM-03 (polarity=False) vs Claim CLM-02 (polarity=True).",
+        "Completeness [50.0]: Identified subject/entity context present.; Substantive contextual content length provided.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating source confirmation is absent.",
+        "Originating author or organization is unspecified.",
+        "Specific measurement units or quantitative details are absent."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.7,
+      "directness_score": 0.7,
+      "corroboration_score": 0.4,
+      "consistency_score": 0.65,
+      "completeness_score": 0.5,
+      "overall_score": 0.6025,
+      "rating": "MEDIUM",
+      "modality_neutrality_flag": true
+    }
+  },
+  "conflicts": [
+    {
+      "claim_a_id": "CLM-02",
+      "claim_b_id": "CLM-03",
+      "conflict_type": "unresolved_conflict",
+      "description": "Direct polarity contradiction on same subject: Claim CLM-02 asserts positive whereas Claim CLM-03 asserts negative.",
+      "conflicting_attributes": [
+        "polarity",
+        "statement"
+      ],
+      "temporal_resolution": null,
+      "unit_resolution": null,
+      "scope_resolution": null,
+      "is_resolved": false,
+      "resolution_reason": "Cannot force resolution: Both sources possess comparable or non-dispositive reliability (Claim A: 0.73, Claim B: 0.60)."
+    }
+  ],
+  "suspicion_indicators": [
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-01' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-01"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-02' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-02"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-02' asserts entity 'Project Cerberus', but entity name is not found in linked evidence 'EV-02'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-02"
+      ],
+      "affected_claim_ids": [
+        "CLM-02"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_MISSING_DATE",
+      "category": "temporal",
+      "title": "Missing Document Date",
+      "severity": "LOW",
+      "explanation": "Evidence item 'EV-03' has no recorded document timestamp or creation date. Temporal context cannot be anchored.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-03"
+      ],
+      "affected_claim_ids": [],
+      "recommended_verification_action": "Inspect document headers or archive metadata for publication date.",
+      "recommended_checks": []
+    },
+    {
+      "indicator_code": "SUSP_ENTITY_MISMATCH",
+      "category": "content_integrity",
+      "title": "Entity Mismatch with Linked Claim",
+      "severity": "MEDIUM",
+      "explanation": "Claim 'CLM-03' asserts entity 'Project Cerberus', but entity name is not found in linked evidence 'EV-03'.",
+      "caveat": "A suspicious indicator does not prove forgery, falsehood or manipulation. It serves solely as an audit signal warranting secondary verification.",
+      "affected_evidence_ids": [
+        "EV-03"
+      ],
+      "affected_claim_ids": [
+        "CLM-03"
+      ],
+      "recommended_verification_action": "Verify entity resolution mapping in Knowledge Graph (Member 3).",
+      "recommended_checks": []
+    }
+  ],
+  "citations": [
+    {
+      "citation_id": "[1]",
+      "evidence_id": "EV-01",
+      "source_id": "FAA-CERT-2024",
+      "filename": "cerberus_certification.pdf",
+      "location_locator": "Page 4, Section 'Payload Specifications'",
+      "formatted_citation": "[1] Source: FAA-CERT-2024 | File: cerberus_certification.pdf | Type: PDF document | Page 4 | Section 'Payload Specifications' | Evidence ID: EV-01",
+      "verifiable_metadata": {
+        "evidence_id": "EV-01",
+        "source_id": "FAA-CERT-2024",
+        "filename": "cerberus_certification.pdf",
+        "source_type": "PDF document",
+        "page_number": "4",
+        "section": "Payload Specifications",
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": "sha256:7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069"
+      },
+      "source_type": "PDF document",
+      "page_number": 4,
+      "section": "Payload Specifications",
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Official certification report specifies Project Cerberus drone maximum payload capacity certified at 15.5 kg.",
+      "claim_id": null,
+      "missing_fields": []
+    },
+    {
+      "citation_id": "[2]",
+      "evidence_id": "EV-02",
+      "source_id": "ENG-LOG-2024",
+      "filename": "flight_testing_summary.pdf",
+      "location_locator": "Page 12, Section 'Testing Results'",
+      "formatted_citation": "[2] Source: ENG-LOG-2024 | File: flight_testing_summary.pdf | Type: PDF document | Page 12 | Section 'Testing Results' | Evidence ID: EV-02",
+      "verifiable_metadata": {
+        "evidence_id": "EV-02",
+        "source_id": "ENG-LOG-2024",
+        "filename": "flight_testing_summary.pdf",
+        "source_type": "PDF document",
+        "page_number": "12",
+        "section": "Testing Results",
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "PDF document",
+      "page_number": 12,
+      "section": "Testing Results",
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Engineering flight log confirms all scheduled test phases completed successfully.",
+      "claim_id": null,
+      "missing_fields": []
+    },
+    {
+      "citation_id": "[3]",
+      "evidence_id": "EV-03",
+      "source_id": "QA-MEMO-DRAFT",
+      "filename": "qa_memo_prelim.pdf",
+      "location_locator": "Page 2, Section 'Cold Weather Testing'",
+      "formatted_citation": "[3] Source: QA-MEMO-DRAFT | File: qa_memo_prelim.pdf | Type: PDF document | Page 2 | Section 'Cold Weather Testing' | Evidence ID: EV-03",
+      "verifiable_metadata": {
+        "evidence_id": "EV-03",
+        "source_id": "QA-MEMO-DRAFT",
+        "filename": "qa_memo_prelim.pdf",
+        "source_type": "PDF document",
+        "page_number": "2",
+        "section": "Cold Weather Testing",
+        "table_name": null,
+        "row_id": null,
+        "image_id": null,
+        "url": null,
+        "checksum_hash": null
+      },
+      "source_type": "PDF document",
+      "page_number": 2,
+      "section": "Cold Weather Testing",
+      "paragraph": null,
+      "table_name": null,
+      "row_id": null,
+      "image_id": null,
+      "url": null,
+      "extracted_text": "Internal draft QA memo indicates battery endurance failed secondary cold-weather test.",
+      "claim_id": null,
+      "missing_fields": []
+    }
+  ],
+  "claim_citations": [
+    {
+      "claim_id": "CLM-01",
+      "statement": "Project Cerberus drone payload capacity is certified at 15.5 kg.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-01",
+          "source_id": "FAA-CERT-2024",
+          "filename": "cerberus_certification.pdf",
+          "source_type": "PDF document",
+          "page_number": 4,
+          "section": "Payload Specifications",
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Official certification report specifies Project Cerberus drone maximum payload capacity certified at 15.5 kg.",
+          "claim_id": "CLM-01",
+          "formatted_citation": "Source: FAA-CERT-2024 | File: cerberus_certification.pdf | Type: PDF document | Page 4 | Section 'Payload Specifications' | Evidence ID: EV-01",
+          "missing_fields": []
+        }
+      ],
+      "missing_metadata": [],
+      "invalid_evidence_ids": []
+    },
+    {
+      "claim_id": "CLM-02",
+      "statement": "Project Cerberus testing was successfully completed on schedule.",
+      "polarity": true,
+      "citations": [
+        {
+          "evidence_id": "EV-02",
+          "source_id": "ENG-LOG-2024",
+          "filename": "flight_testing_summary.pdf",
+          "source_type": "PDF document",
+          "page_number": 12,
+          "section": "Testing Results",
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Engineering flight log confirms all scheduled test phases completed successfully.",
+          "claim_id": "CLM-02",
+          "formatted_citation": "Source: ENG-LOG-2024 | File: flight_testing_summary.pdf | Type: PDF document | Page 12 | Section 'Testing Results' | Evidence ID: EV-02",
+          "missing_fields": []
+        }
+      ],
+      "missing_metadata": [],
+      "invalid_evidence_ids": []
+    },
+    {
+      "claim_id": "CLM-03",
+      "statement": "Project Cerberus testing failed battery endurance benchmark.",
+      "polarity": false,
+      "citations": [
+        {
+          "evidence_id": "EV-03",
+          "source_id": "QA-MEMO-DRAFT",
+          "filename": "qa_memo_prelim.pdf",
+          "source_type": "PDF document",
+          "page_number": 2,
+          "section": "Cold Weather Testing",
+          "paragraph": null,
+          "table_name": null,
+          "row_id": null,
+          "image_id": null,
+          "url": null,
+          "extracted_text": "Internal draft QA memo indicates battery endurance failed secondary cold-weather test.",
+          "claim_id": "CLM-03",
+          "formatted_citation": "Source: QA-MEMO-DRAFT | File: qa_memo_prelim.pdf | Type: PDF document | Page 2 | Section 'Cold Weather Testing' | Evidence ID: EV-03",
+          "missing_fields": []
+        }
+      ],
+      "missing_metadata": [],
+      "invalid_evidence_ids": []
+    }
+  ],
+  "reasoning_mode": "deterministic",
+  "audit_trail": [
+    "Initiated 7-stage conflict-aware reasoning engine."
+  ]
+}

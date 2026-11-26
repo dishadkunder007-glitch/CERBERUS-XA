@@ -1,0 +1,85 @@
+{
+  "evidence_reliability": {
+    "EV-01": {
+      "evidence_id": "EV-01",
+      "reliability_score": 76.75,
+      "reliability_label": "High",
+      "criteria_scores": {
+        "provenance": {
+          "name": "provenance",
+          "score": 70.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Identifiable source system/repository ('FAA-TCDS').; Original file/archive reference documented ('TCDS_A7_Rev2.pdf').; Precise physical/logical reference provided (Page 4, Section 'Technical Specifications').",
+          "missing_information": [
+            "Originating author or organization is unspecified.",
+            "Cryptographic hash or digital signature is not provided."
+          ]
+        },
+        "directness": {
+          "name": "directness",
+          "score": 100.0,
+          "weight": 0.25,
+          "is_assessed": true,
+          "explanation": "Direct primary observation, original record, or raw instrumentation log.",
+          "missing_information": []
+        },
+        "corroboration": {
+          "name": "corroboration",
+          "score": 40.0,
+          "weight": 0.2,
+          "is_assessed": true,
+          "explanation": "Standalone evidence item; no other sources available in the provided corpus to corroborate.",
+          "missing_information": [
+            "Independent corroborating evidence is not present in the current corpus."
+          ]
+        },
+        "consistency": {
+          "name": "consistency",
+          "score": 100.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "High extraction confidence (1.00).",
+          "missing_information": []
+        },
+        "completeness": {
+          "name": "completeness",
+          "score": 75.0,
+          "weight": 0.15,
+          "is_assessed": true,
+          "explanation": "Identified subject/entity context present.; Concrete quantitative/unit details present.; Substantive contextual content length provided.",
+          "missing_information": [
+            "Date or temporal context anchor is missing."
+          ]
+        }
+      },
+      "reasons": [
+        "Provenance [70.0]: Identifiable source system/repository ('FAA-TCDS').; Original file/archive reference documented ('TCDS_A7_Rev2.pdf').; Precise physical/logical reference provided (Page 4, Section 'Technical Specifications').",
+        "Directness [100.0]: Direct primary observation, original record, or raw instrumentation log.",
+        "Corroboration [40.0]: Standalone evidence item; no other sources available in the provided corpus to corroborate.",
+        "Consistency [100.0]: High extraction confidence (1.00).",
+        "Completeness [75.0]: Identified subject/entity context present.; Concrete quantitative/unit details present.; Substantive contextual content length provided.",
+        "Modality 'document' evaluated strictly on provenance criteria without modality-based discrimination."
+      ],
+      "missing_information": [
+        "Cryptographic hash or digital signature is not provided.",
+        "Date or temporal context anchor is missing.",
+        "Independent corroborating evidence is not present in the current corpus.",
+        "Originating author or organization is unspecified."
+      ],
+      "limitations": [
+        "Reliability score is an epistemic assessment of provenance, directness, consistency, and corroboration; it does not constitute mathematical proof of truth.",
+        "Author-expressed rhetorical confidence or assertive tone is excluded as a reliability metric to eliminate subjective persuasion bias.",
+        "Missing information or unknown source attribution reflects evidential gaps, not proof of fabrication or falsehood."
+      ],
+      "traceability_score": 0.7,
+      "directness_score": 1.0,
+      "corroboration_score": 0.4,
+      "consistency_score": 1.0,
+      "completeness_score": 0.75,
+      "overall_score": 0.7675,
+      "rating": "HIGH",
+      "modality_neutrality_flag": true
+    }
+  }
+}

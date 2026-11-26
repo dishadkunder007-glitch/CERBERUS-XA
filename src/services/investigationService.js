@@ -30,11 +30,25 @@ export const getAuditLogs = async (params = {}) => {
   return response.data;
 };
 
+export const getInvestigationsHistory = async () => {
+  const response = await apiClient.get('/investigations');
+  return response.data;
+};
+
+export const exportInvestigationReport = async (dossier, format = 'json') => {
+  const response = await apiClient.post(`/export-report?format=${encodeURIComponent(format)}`, dossier, {
+    responseType: 'blob',
+  });
+  return response.data;
+};
+
 export default {
   submitInvestigationQuery,
   getInvestigationReport,
   getEntityResolutions,
   getReliabilityAnalysis,
   getAdversarialAnalysis,
-  getAuditLogs
+  getAuditLogs,
+  getInvestigationsHistory,
+  exportInvestigationReport
 };

@@ -1,0 +1,11 @@
+EXTERNAL AUDIT REPORT
+Date: January 2026
+Entity: ABC Industries Manufacturing Plant
+
+Audit Findings:
+- Total production verified at 5,000 units during January 2026.
+- Verified revenue of INR 25,00,000 for the period.
+- Verified active headcount of 450 employees.
+- Plant operational capacity confirmed at 92%.
+
+Auditor: KPMG Verification Services

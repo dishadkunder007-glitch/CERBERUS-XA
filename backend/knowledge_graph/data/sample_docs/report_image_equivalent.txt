@@ -1,0 +1,19 @@
+FACTORY FLOOR INSPECTION REPORT
+Prepared by: Quality Assurance Team
+Date: January 2026
+
+Facility: ABC Industries Manufacturing Plant
+Location: Pune, India
+
+PRODUCTION DATA (Observed):
+- Units Produced in January 2026: 3,000 units
+- Capacity Utilization: 60%
+- Revenue Estimate: ₹15 lakh
+- Workers on Floor: 320
+
+REMARKS:
+The image inspection shows lower output than expected.
+Production was 3,000 units in January 2026, significantly below the 5,000
+units figure reported in the management summary.
+
+Profit margin: 8% based on observed output.

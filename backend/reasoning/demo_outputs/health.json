@@ -1,0 +1,21 @@
+{
+  "status": "healthy",
+  "module": "Member 4: AI Reasoning & Evidence Verification",
+  "system": "CERBERUS-XA",
+  "mode": "offline-first-deterministic",
+  "version": "1.0.0",
+  "ollama_available": false,
+  "ollama_model": "qwen2.5:7b-instruct",
+  "llm_accepted": 0,
+  "llm_rejected": 0,
+  "llm_rejection_reasons": {
+    "status": 0,
+    "negation": 0,
+    "number": 0,
+    "novel_tokens": 0,
+    "evidence_id": 0,
+    "spelled_number": 0,
+    "unit": 0,
+    "entity": 0
+  }
+}
